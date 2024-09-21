@@ -1,7 +1,7 @@
 import React, { useState, useEffect , Link } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import '../PagesCss/Hotel_Reserve_Rooms.css';
+import '../PagesCss/HotelReserveRooms.css';
 
 function App() {
   const [checkinDate, setCheckinDate] = useState('');

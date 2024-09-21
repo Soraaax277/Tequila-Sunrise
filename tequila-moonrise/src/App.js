@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import Register from './Pages/Register'; 
 import Login from './Pages/Login';
+import HotelReserve from './Pages/HotelReserve';
 
 function App() {
   return (
@@ -27,12 +28,16 @@ function App() {
             <li>
               <Link to="login">Login</Link>
             </li>
+            <li>
+              <Link to="hotel_reserve">Stay</Link>
+            </li>
           </ul>
         </nav>
 
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/hotel_reserve" element={<HotelReserve/>} />
         </Routes>
       </div>
     </Router>
