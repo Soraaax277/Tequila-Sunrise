@@ -13,22 +13,22 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
             </li>
             <li>
+              <Link to="/hotel">Stay</Link>
+            </li>
+            <li>
+              <Link to="/restaurant">Dine</Link> 
+            </li>
+            <li>
               <Link to="/contact">Contact</Link>
             </li>
             <li>
-              <Link to="register">Register</Link>
-            </li>
-            <li>
-              <Link to="login">Login</Link>
-            </li>
-            <li>
-              <Link to="hotel_reserve">Stay</Link>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </nav>

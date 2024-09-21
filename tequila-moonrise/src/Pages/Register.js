@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../PagesCss/Register.css'; 
 
 const Register = () => {
@@ -44,7 +45,6 @@ const Register = () => {
 
     if (validateForm()) {
       console.log("Form data submitted:", formData);
-      
     }
   };
 
@@ -124,6 +124,10 @@ const Register = () => {
         </div>
         <button type="submit">Register</button>
       </form>
+
+      <p className="login-link">
+        Have an account? <Link to="/login">Login here</Link>
+      </p>
     </div>
   );
 };
