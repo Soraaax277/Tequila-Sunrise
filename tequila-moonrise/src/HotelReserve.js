@@ -237,9 +237,7 @@ function App() {
           </div>
         </div>
         <button className="btn-next">
-  <Link to={`/select-rooms-rates?checkin=${checkinDate}&checkout=${checkoutDate}`}>
     NEXT
-  </Link>
 </button>
       </div>
     </div>
