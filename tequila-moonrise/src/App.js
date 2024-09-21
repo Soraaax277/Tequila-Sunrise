@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import Register from './Pages/Register'; 
 import Login from './Pages/Login';
 import HotelReserve from './Pages/HotelReserve';
+import './App.css';
+
 
 function App() {
   return (
@@ -18,9 +20,6 @@ function App() {
             </li>
             <li>
               <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/counter">Counter</Link>
             </li>
             <li>
               <Link to="register">Register</Link>
