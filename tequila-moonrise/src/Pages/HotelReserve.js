@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '../PagesCss/HotelReserveRooms.css';
 
-function App() {
+function HotelReserve() {
   const [checkinDate, setCheckinDate] = useState('');
   const [checkoutDate, setCheckoutDate] = useState('');
   const [calendarMonth, setCalendarMonth] = useState(new Date().getMonth());
@@ -246,4 +246,4 @@ function App() {
   );
 }
 
-export default App;
+export default HotelReserve;
