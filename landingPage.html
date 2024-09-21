@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tequila Moonrise Hotel Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <h1>Tequila Moonrise</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Menu</a>
+            <a href="#">Book Now</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="reservation-container">
+        <section class="reservation-form">
+            <h2>Reserve Your Stay Among the Stars</h2>
+            <form>
+                <label for="checkin">Check-in Date</label>
+                <input type="date" id="checkin" name="checkin" required>
+
+                <label for="checkout">Check-out Date</label>
+                <input type="date" id="checkout" name="checkout" required>
+
+                <label for="room">Select Room</label>
+                <select id="room" name="room">
+                    <option value="lunar-suite">Lunar Suite</option>
+                    <option value="cosmic-cabin">Cosmic Cabin</option>
+                    <option value="galaxy-penthouse">Galaxy Penthouse</option>
+                    <option value="stellar-studio">Stellar Studio</option>
+                </select>
+
+                <label for="special">Special Requests</label>
+                <textarea id="special" name="special" placeholder="Any special requests" rows="4"></textarea>
+
+                <button type="submit" class="submit-btn">Book Now</button>
+            </form>
+        </section>
+
+        <section class="room-display">
+            <h2>Select Your Room</h2>
+            <div class="room-grid">
+                <div class="room-card" data-room="lunar-suite">
+                    <img src="lunar-suite.jpg" alt="Lunar Suite">
+                    <h3>Lunar Suite</h3>
+                    <p>Relax with a view of the moon's surface, perfect for cosmic contemplation.</p>
+                </div>
+                <div class="room-card" data-room="cosmic-cabin">
+                    <img src="cosmic-cabin.jpg" alt="Cosmic Cabin">
+                    <h3>Cosmic Cabin</h3>
+                    <p>Cozy up in a modern, space-themed cabin with nebula views.</p>
+                </div>
+                <div class="room-card" data-room="galaxy-penthouse">
+                    <img src="galaxy-penthouse.jpg" alt="Galaxy Penthouse">
+                    <h3>Galaxy Penthouse</h3>
+                    <p>Experience luxury living surrounded by stunning star-filled skies.</p>
+                </div>
+                <div class="room-card" data-room="stellar-studio">
+                    <img src="stellar-studio.jpg" alt="Stellar Studio">
+                    <h3>Stellar Studio</h3>
+                    <p>Minimalist, futuristic space with a spectacular view of the stars.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
