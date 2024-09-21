@@ -10,7 +10,7 @@ const rooms = [
   { id: 4, name: 'Room 4', price: 250, image: 'https://placehold.co/200x150?text=Room+4', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
 ];
 
-const App = () => {
+const HotelReserveRoom = () => {
   const [adults, setAdults] = useState(1);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [breakfast, setBreakfast] = useState(false);

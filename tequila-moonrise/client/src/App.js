@@ -6,6 +6,7 @@ import HotelReserve from './HotelReserve';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
+import './Stay.css';
 
 function App() {
   return (
