@@ -237,7 +237,7 @@ function App() {
           </div>
         </div>
         <button className="btn-next">
- <Link to="Hotel_Reserve_Rooms">Register
+ <Link to="HotelReserveRooms">
     NEXT
   </Link>
 </button>
