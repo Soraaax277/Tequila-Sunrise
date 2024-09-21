@@ -1,0 +1,77 @@
+body {
+    background: url('https://placehold.co/1920x1080') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    border-bottom: 1px solid #666;
+  }
+  
+  .navbar-brand img {
+    height: 50px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  .navbar-nav .nav-link.active {
+    color: #ccc;
+  }
+  
+  .steps {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .step {
+    background-color: #5a4fcf;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    position: relative;
+    clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
+  }
+  
+  .step.active {
+    background-color: #3a2fcf;
+  }
+  
+  .step:last-child {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%, 10% 50%);
+  }
+  
+  .form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  .form-control {
+    background-color: #ccc;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-next {
+    background-color: #5a4fcf;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    float: right;
+  }
+  
+  .btn-next:hover {
+    background-color: #3a2fcf;
+  }

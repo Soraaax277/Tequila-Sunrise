@@ -3,24 +3,48 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
-const rooms = [
-  { id: 1, name: 'Room 1', price: 100, image: 'https://placehold.co/200x150?text=Room+1', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning'] },
-  { id: 2, name: 'Room 2', price: 150, image: 'https://placehold.co/200x150?text=Room+2', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar'] },
-  { id: 3, name: 'Room 3', price: 200, image: 'https://placehold.co/200x150?text=Room+3', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view'] },
-  { id: 4, name: 'Room 4', price: 250, image: 'https://placehold.co/200x150?text=Room+4', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
-];
+function App() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    gender: '',
+    birthdate: '',
+    email: '',
+    nationality: '',
+    confirmEmail: '',
+    arrivalTime: '',
+    contactNumber: '',
+    address: ''
+  });
 
-const App = () => {
-  const [adults, setAdults] = useState(1);
-  const [selectedRoom, setSelectedRoom] = useState(null);
-  const [breakfast, setBreakfast] = useState(false);
-  const [extraBed, setExtraBed] = useState(false);
-  const [request, setRequest] = useState('');
+  const [errors, setErrors] = useState({});
 
-  const baseRate = selectedRoom ? selectedRoom.price : 0;
-  const breakfastPrice = breakfast ? 20 : 0;
-  const extraBedPrice = extraBed ? 30 : 0;
-  const totalFee = (baseRate + breakfastPrice + extraBedPrice) * adults;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        newErrors[key] = 'Please type in the required field';
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Form is valid, proceed with submission
+      console.log('Form submitted:', formData);
+    }
+  };
 
   return (
     <div className="App">
@@ -28,44 +52,32 @@ const App = () => {
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             <img
-              src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-wZGylhENnxNN00Lg6rqHNzaM.png?st=2024-09-21T07%3A51%3A01Z&se=2024-09-21T09%3A51%3A01Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-20T23%3A44%3A58Z&ske=2024-09-21T23%3A44%3A58Z&sks=b&skv=2024-08-04&sig=tVDwbShvvNGi8cQa1YJNebDVr1/R%2BKzigOqmb1BugCU%3D"
+              src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-nVSJ2KTmabFDVkEk6bbRE8Jv.png?st=2024-09-21T11%3A32%3A20Z&se=2024-09-21T13%3A32%3A20Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-20T23%3A19%3A23Z&ske=2024-09-21T23%3A19%3A23Z&sks=b&skv=2024-08-04&sig=Ks06xT3m7bgT6lKFZSAwafAGd1ueGLC1IXJalXmP4XU%3D"
               alt="Tequila Moonrise Logo"
               height="50"
               width="50"
             />
             TEQUILA MOONRISE
           </a>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto">
+          <div className="collapse navbar-collapse justify-content-end">
+            <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  HOME
-                </a>
+                <a className="nav-link" href="#">HOME</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  ABOUT
-                </a>
+                <a className="nav-link" href="#">ABOUT</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="#">
-                  STAY
-                </a>
+                <a className="nav-link active" href="#">STAY</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  DINE
-                </a>
+                <a className="nav-link" href="#">DINE</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  CONTACT
-                </a>
+                <a className="nav-link" href="#">CONTACT</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  LOGIN
-                </a>
+                <a className="nav-link" href="#">LOGIN</a>
               </li>
             </ul>
           </div>
@@ -73,70 +85,349 @@ const App = () => {
       </nav>
       <div className="steps">
         <div className="step">CHECK-IN & CHECK-OUT DATE</div>
-        <div className="step active">SELECT ROOMS & RATES</div>
-        <div className="step">GUEST INFORMATION</div>
+        <div className="step">SELECT ROOMS & RATES</div>
+        <div className="step active">GUEST INFORMATION</div>
         <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
       </div>
-      <div className="container">
-        <form>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="adults">Number of Adults</label>
-            <input className="form-control" id="adults" type="number" value={adults} onChange={(e) => setAdults(e.target.value)} />
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-md-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="First Name"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+              {errors.firstName && <div className="error">{errors.firstName}</div>}
+            </div>
+            <div className="col-md-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Last Name"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+              {errors.lastName && <div className="error">{errors.lastName}</div>}
+            </div>
           </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="room">Room</label>
-            <select className="form-control" id="room" onChange={(e) => setSelectedRoom(rooms.find(room => room.id === parseInt(e.target.value)))}>
-              <option value="">Select a room</option>
-              {rooms.map(room => (
-                <option key={room.id} value={room.id}>{room.name}</option>
-              ))}
-            </select>
+          <div className="row">
+            <div className="col-md-6">
+              <select
+                className="form-control"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <option value="">Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              {errors.gender && <div className="error">{errors.gender}</div>}
+            </div>
+            <div className="col-md-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Birthdate"
+                name="birthdate"
+                value={formData.birthdate}
+                onChange={handleChange}
+              />
+              {errors.birthdate && <div className="error">{errors.birthdate}</div>}
+            </div>
           </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="baseRate">Base Rate</label>
-            <input className="form-control" id="baseRate" type="text" value={baseRate} readOnly />
+          <div className="row">
+            <div className="col-md-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Email Address"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {errors.email && <div className="error">{errors.email}</div>}
+            </div>
+            <div className="col-md-6">
+              <select
+                className="form-control"
+                name="nationality"
+                value={formData.nationality}
+                onChange={handleChange}
+              >
+                <option>Nationality</option>
+                <option>Afghan</option>
+                <option>Albanian</option>
+                <option>Algerian</option>
+                <option>American</option>
+                <option>Andorran</option>
+                <option>Angolan</option>
+                <option>Antiguan</option>
+                <option>Argentine</option>
+                <option>Armenian</option>
+                <option>Australian</option>
+                <option>Austrian</option>
+                <option>Azerbaijani</option>
+                <option>Bahamian</option>
+                <option>Bahraini</option>
+                <option>Bangladeshi</option>
+                <option>Barbadian</option>
+                <option>Belarusian</option>
+                <option>Belgian</option>
+                <option>Belizean</option>
+                <option>Beninese</option>
+                <option>Bhutanese</option>
+                <option>Bolivian</option>
+                <option>Bosnian</option>
+                <option>Botswanan</option>
+                <option>Brazilian</option>
+                <option>British</option>
+                <option>Bruneian</option>
+                <option>Bulgarian</option>
+                <option>Burkinabe</option>
+                <option>Burmese</option>
+                <option>Burundian</option>
+                <option>Cambodian</option>
+                <option>Cameroonian</option>
+                <option>Canadian</option>
+                <option>Cape Verdean</option>
+                <option>Central African</option>
+                <option>Chadian</option>
+                <option>Chilean</option>
+                <option>Chinese</option>
+                <option>Colombian</option>
+                <option>Comoran</option>
+                <option>Congolese</option>
+                <option>Costa Rican</option>
+                <option>Croatian</option>
+                <option>Cuban</option>
+                <option>Cypriot</option>
+                <option>Czech</option>
+                <option>Danish</option>
+                <option>Djiboutian</option>
+                <option>Dominican</option>
+                <option>Dominican (Republic)</option>
+                <option>Dutch</option>
+                <option>East Timorese</option>
+                <option>Ecuadorean</option>
+                <option>Egyptian</option>
+                <option>Emirati</option>
+                <option>Equatorial Guinean</option>
+                <option>Eritrean</option>
+                <option>Estonian</option>
+                <option>Ethiopian</option>
+                <option>Fijian</option>
+                <option>Filipino</option>
+                <option>Finnish</option>
+                <option>French</option>
+                <option>Gabonese</option>
+                <option>Gambian</option>
+                <option>Georgian</option>
+                <option>German</option>
+                <option>Ghanaian</option>
+                <option>Greek</option>
+                <option>Grenadian</option>
+                <option>Guatemalan</option>
+                <option>Guinea-Bissauan</option>
+                <option>Guinean</option>
+                <option>Guyanese</option>
+                <option>Haitian</option>
+                <option>Honduran</option>
+                <option>Hungarian</option>
+                <option>Icelandic</option>
+                <option>Indian</option>
+                <option>Indonesian</option>
+                <option>Iranian</option>
+                <option>Iraqi</option>
+                <option>Irish</option>
+                <option>Israeli</option>
+                <option>Italian</option>
+                <option>Ivorian</option>
+                <option>Jamaican</option>
+                <option>Japanese</option>
+                <option>Jordanian</option>
+                <option>Kazakh</option>
+                <option>Kenyan</option>
+                <option>Kiribati</option>
+                <option>Kuwaiti</option>
+                <option>Kyrgyz</option>
+                <option>Lao</option>
+                <option>Latvian</option>
+                <option>Lebanese</option>
+                <option>Liberian</option>
+                <option>Libyan</option>
+                <option>Liechtensteiner</option>
+                <option>Lithuanian</option>
+                <option>Luxembourger</option>
+                <option>Macedonian</option>
+                <option>Malagasy</option>
+                <option>Malawian</option>
+                <option>Malaysian</option>
+                <option>Maldivian</option>
+                <option>Malian</option>
+                <option>Maltese</option>
+                <option>Marshallese</option>
+                <option>Mauritanian</option>
+                <option>Mauritian</option>
+                <option>Mexican</option>
+                <option>Micronesian</option>
+                <option>Moldovan</option>
+                <option>Monacan</option>
+                <option>Mongolian</option>
+                <option>Montenegrin</option>
+                <option>Moroccan</option>
+                <option>Mozambican</option>
+                <option>Namibian</option>
+                <option>Nauruan</option>
+                <option>Nepalese</option>
+                <option>New Zealander</option>
+                <option>Nicaraguan</option>
+                <option>Nigerian</option>
+                <option>Nigerien</option>
+                <option>North Korean</option>
+                <option>Norwegian</option>
+                <option>Omani</option>
+                <option>Pakistani</option>
+                <option>Palauan</option>
+                <option>Palestinian</option>
+                <option>Panamanian</option>
+                <option>Papua New Guinean</option>
+                <option>Paraguayan</option>
+                <option>Peruvian</option>
+                <option>Philippine</option>
+                <option>Polish</option>
+                <option>Portuguese</option>
+                <option>Qatari</option>
+                <option>Romanian</option>
+                <option>Russian</option>
+                <option>Rwandan</option>
+                <option>Saint Lucian</option>
+                <option>Salvadoran</option>
+                <option>Samoan</option>
+                <option>San Marinese</option>
+                <option>Sao Tomean</option>
+                <option>Saudi</option>
+                <option>Senegalese</option>
+                <option>Serbian</option>
+                <option>Seychellois</option>
+                <option>Sierra Leonean</option>
+                <option>Singaporean</option>
+                <option>Slovak</option>
+                <option>Slovenian</option>
+                <option>Solomon Islander</option>
+                <option>Somali</option>
+                <option>South African</option>
+                <option>South Korean</option>
+                <option>South Sudanese</option>
+                <option>Spanish</option>
+                <option>Sri Lankan</option>
+                <option>Sudanese</option>
+                <option>Surinamer</option>
+                <option>Swazi</option>
+                <option>Swedish</option>
+                <option>Swiss</option>
+                <option>Syrian</option>
+                <option>Taiwanese</option>
+                <option>Tajik</option>
+                <option>Tanzanian</option>
+                <option>Thai</option>
+                <option>Togolese</option>
+                <option>Tongan</option>
+                <option>Trinidadian or Tobagonian</option>
+                <option>Tunisian</option>
+                <option>Turkish</option>
+                <option>Turkmen</option>
+                <option>Tuvaluan</option>
+                <option>Ugandan</option>
+                <option>Ukrainian</option>
+                <option>Uruguayan</option>
+                <option>Uzbek</option>
+                <option>Vanuatuan</option>
+                <option>Venezuelan</option>
+                <option>Vietnamese</option>
+                <option>Yemeni</option>
+                <option>Zambian</option>
+                <option>Zimbabwean</option>
+              </select>
+            </div>
           </div>
-          <div className="mb-3">
-            <label className="form-label">Room Inclusions:</label>
-            <ul>
-              {selectedRoom && selectedRoom.inclusions.map((inclusion, index) => (
-                <li key={index}>{inclusion}</li>
-              ))}
-            </ul>
+          <div className="row">
+            <div className="col-md-6">
+              <input type="text" className="form-control" placeholder="Confirm Email Address" />
+            </div>
+            <div className="col-md-6">
+              <select className="form-control">
+                <option>Estimated Time of Arrival</option>
+                <option>00:00</option>
+                <option>00:30</option>
+                <option>01:00</option>
+                <option>01:30</option>
+                <option>02:00</option>
+                <option>02:30</option>
+                <option>03:00</option>
+                <option>03:30</option>
+                <option>04:00</option>
+                <option>04:30</option>
+                <option>05:00</option>
+                <option>05:30</option>
+                <option>06:00</option>
+                <option>06:30</option>
+                <option>07:00</option>
+                <option>07:30</option>
+                <option>08:00</option>
+                <option>08:30</option>
+                <option>09:00</option>
+                <option>09:30</option>
+                <option>10:00</option>
+                <option>10:30</option>
+                <option>11:00</option>
+                <option>11:30</option>
+                <option>12:00</option>
+                <option>12:30</option>
+                <option>13:00</option>
+                <option>13:30</option>
+                <option>14:00</option>
+                <option>14:30</option>
+                <option>15:00</option>
+                <option>15:30</option>
+                <option>16:00</option>
+                <option>16:30</option>
+                <option>17:00</option>
+                <option>17:30</option>
+                <option>18:00</option>
+                <option>18:30</option>
+                <option>19:00</option>
+                <option>19:30</option>
+                <option>20:00</option>
+                <option>20:30</option>
+                <option>21:00</option>
+                <option>21:30</option>
+                <option>22:00</option>
+                <option>22:30</option>
+                <option>23:00</option>
+                <option>23:30</option>
+              </select>
+            </div>
           </div>
-          <div className="mb-3 form-check">
-            <input className="form-check-input" id="breakfast" type="checkbox" checked={breakfast} onChange={() => setBreakfast(!breakfast)} />
-            <label className="form-check-label" htmlFor="breakfast">Breakfast Buffet</label>
+          <div className="row">
+            <div className="col-md-6">
+              <input type="text" className="form-control" placeholder="Contact Number" />
+            </div>
+            <div className="col-md-6">
+              <input type="text" className="form-control" placeholder="Address" />
+            </div>
           </div>
-          <div className="mb-3 form-check">
-            <input className="form-check-input" id="extraBed" type="checkbox" checked={extraBed} onChange={() => setExtraBed(!extraBed)} />
-            <label className="form-check-label" htmlFor="extraBed">Extra Bed</label>
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="request">Special Requests (will be added to the bill):</label>
-            <textarea className="form-control" id="request" value={request} onChange={(e) => setRequest(e.target.value)} />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="totalFee">Total Fee</label>
-            <input className="form-control" id="totalFee" type="text" value={totalFee} readOnly />
-          </div>
+          <button type="submit" className="btn btn-next">NEXT</button>
         </form>
-        <div className="row">
-          <div className="col-md-8">
-            <img className="room-image" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-UgEkKwPC6taDZRTUgCEuoLzN.png?st=2024-09-21T09%3A44%3A13Z&se=2024-09-21T11%3A44%3A13Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-21T02%3A53%3A15Z&ske=2024-09-22T02%3A53%3A15Z&sks=b&skv=2024-08-04&sig=6CRLY9C7ufJ3Owitwk0RsKw6N%2BqLJBHxKVqeiJm0/J4%3D" alt="Room layout image" />
-          </div>
-          <div className="col-md-4">
-            {rooms.map(room => (
-              <img key={room.id} className="room-image mb-3" src={room.image} alt={`Room ${room.id}`} onClick={() => setSelectedRoom(room)} />
-            ))}
-          </div>
-        </div>
-        <div className="text-end mt-3">
-          <a className="next-button" href="/next-step">NEXT</a>
-        </div>
       </div>
     </div>
   );
-};
+}
 
 export default App;
