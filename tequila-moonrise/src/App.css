@@ -1,87 +1,89 @@
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-  }
-  
-  .navbar {
-    border-bottom: 1px solid white;
-  }
-  
-  .navbar-brand img {
-    height: 50px;
-  }
-  
-  .navbar-nav .nav-link {
-    color: white;
-    margin-right: 20px;
-  }
-  
-  .navbar-nav .nav-link.active {
-    font-weight: bold;
-  }
-  
-  .steps {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .step {
-    background-color: #5a4fcf;
-    color: white;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 5px;
-  }
-  
-  .step.active {
-    background-color: #3a2fcf;
-  }
-  
-  .calendar {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .calendar table {
-    border-collapse: collapse;
-    width: 80%;
-  }
-  
-  .calendar th,
-  .calendar td {
-    border: 1px solid #5a4fcf;
-    padding: 20px;
-    text-align: center;
-    color: white;
-  }
-  
-  .calendar th {
-    background-color: #5a4fcf;
-  }
-  
-  .form-group {
-    margin: 20px 0;
-  }
-  
-  .form-control {
-    background-color: black;
-    border: 1px solid white;
-    color: white;
-    border-radius: 20px;
-    padding: 10px 20px;
-  }
-  
-  .btn-next {
-    background-color: #5a4fcf;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  border-bottom: 1px solid white;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: bold;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.step {
+  background-color: #5a4fcf;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.step.active {
+  background-color: #3a2fcf;
+}
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.calendar table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid #5a4fcf;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.calendar th {
+  background-color: #5a4fcf;
+}
+
+.form-group {
+  margin: 20px 0;
+}
+
+.form-control {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.btn-next {
+  background-color: #5a4fcf;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
