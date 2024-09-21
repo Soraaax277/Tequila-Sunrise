@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import './App.css';
+import './Hotel_Reserve_Rooms.css';
 
 const rooms = [
   { id: 1, name: 'Room 1', price: 100, image: 'https://placehold.co/200x150?text=Room+1', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning'] },

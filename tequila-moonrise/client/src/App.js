@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
@@ -11,22 +10,17 @@ const rooms = [
   { id: 4, name: 'Room 4', price: 250, image: 'https://placehold.co/200x150?text=Room+4', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
 ];
 
-const Stay = () => {
+const App = () => {
   const [adults, setAdults] = useState(1);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [breakfast, setBreakfast] = useState(false);
   const [extraBed, setExtraBed] = useState(false);
   const [request, setRequest] = useState('');
-  const navigate = useNavigate();
 
   const baseRate = selectedRoom ? selectedRoom.price : 0;
   const breakfastPrice = breakfast ? 20 : 0;
   const extraBedPrice = extraBed ? 30 : 0;
   const totalFee = (baseRate + breakfastPrice + extraBedPrice) * adults;
-
-  const handleNext = () => {
-    navigate('/guest-information');
-  };
 
   return (
     <div className="App">
@@ -138,101 +132,10 @@ const Stay = () => {
           </div>
         </div>
         <div className="text-end mt-3">
-          <button className="next-button" onClick={handleNext}>NEXT</button>
+          <a className="next-button" href="/next-step">NEXT</a>
         </div>
       </div>
     </div>
-  );
-};
-
-const GuestInformation = () => {
-  return (
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img
-              src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-wZGylhENnxNN00Lg6rqHNzaM.png?st=2024-09-21T07%3A51%3A01Z&se=2024-09-21T09%3A51%3A01Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-20T23%3A44%3A58Z&ske=2024-09-21T23%3A44%3A58Z&sks=b&skv=2024-08-04&sig=tVDwbShvvNGi8cQa1YJNebDVr1/R%2BKzigOqmb1BugCU%3D"
-              alt="Tequila Moonrise Logo"
-              height="50"
-              width="50"
-            />
-            TEQUILA MOONRISE
-          </a>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  HOME
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  ABOUT
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="#">
-                  STAY
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  DINE
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  CONTACT
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  LOGIN
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div className="steps">
-        <div className="step">CHECK-IN & CHECK-OUT DATE</div>
-        <div className="step">SELECT ROOMS & RATES</div>
-        <div className="step active">GUEST INFORMATION</div>
-        <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
-      </div>
-      <div className="container">
-        <h2>Guest Information</h2>
-        <form>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="name">Name</label>
-            <input className="form-control" id="name" type="text" />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="email">Email</label>
-            <input className="form-control" id="email" type="email" />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="phone">Phone</label>
-            <input className="form-control" id="phone" type="tel" />
-          </div>
-          <div className="text-end mt-3">
-            <button className="next-button" type="submit">NEXT</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Stay />} />
-        <Route path="/guest-information" element={<GuestInformation />} />
-      </Routes>
-    </Router>
   );
 };
 
