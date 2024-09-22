@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './Stay.css';
-import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -21,6 +21,7 @@ function GuestInformation() {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,6 +45,15 @@ function GuestInformation() {
         newErrors[key] = 'Please type in the required field';
       }
     });
+
+    if (formData.email && !formData.email.includes('@')) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (formData.contactNumber && !/^\d+$/.test(formData.contactNumber)) {
+      newErrors.contactNumber = 'Please enter a valid phone number';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -53,6 +63,7 @@ function GuestInformation() {
     if (validateForm()) {
       // Form is valid, proceed with submission
       console.log('Form submitted:', formData);
+      navigate('/booking-confirmation');
     }
   };
 
@@ -314,7 +325,7 @@ function GuestInformation() {
                 <option>Sri Lankan</option>
                 <option>Sudanese</option>
                 <option>Surinamer</option>
- <option>Swazi</option>
+                <option>Swazi</option>
                 <option>Swedish</option>
                 <option>Swiss</option>
                 <option>Syrian</option>
@@ -427,7 +438,7 @@ function GuestInformation() {
               {errors.address && <div className="error">{errors.address}</div>}
             </div>
           </div>
-          <button type="submit" className="btn btn-next">NEXT</button>
+          <button type="submit" className="btn-next">NEXT</button>
         </form>
       </div>
     </div>

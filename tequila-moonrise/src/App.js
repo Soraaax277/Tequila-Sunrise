@@ -4,12 +4,14 @@ import Register from './Register';
 import Login from './Login';
 import HotelReserve from './HotelReserve';
 import HotelReserveRoom from './HotelReserveRoom';
+import GuestInformation from './GuestInformation';
+import BookingConfirmation from './BookingConfirmation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import './Stay.css';
 import './HotelReserveRoom.css';
-import GuestInformation from './GuestInformation';
+import './BookingConfirmation.css';
 
 function App() {
   return (
@@ -64,6 +66,7 @@ function App() {
           <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
         </Routes>
       </div>
     </BrowserRouter>
