@@ -9,6 +9,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import './Stay.css';
 import './HotelReserveRoom.css';
+import GuestInformation from './GuestInformation';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
           <Route path="/select-rooms" element={<HotelReserveRoom />} />
           <Route path="/restaurant" element={<div>Restaurant</div>} />
           <Route path="/contact" element={<div>Contact us</div>} />
+          <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

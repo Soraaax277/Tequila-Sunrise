@@ -24,7 +24,7 @@ const HotelReserveRoom = () => {
   const totalFee = (baseRate + breakfastPrice + extraBedPrice) * adults;
 
   return (
-    <div className="App">
+    <div className="container" style={{ maxWidth: '800px', margin: '40px auto', backgroundColor: 'transparent', padding: '20px', border: '1px solid #ccc', borderRadius: '10px' }}>
       <div className="steps">
         <div className="step">CHECK-IN & CHECK-OUT DATE</div>
         <div className="step active">SELECT ROOMS & RATES</div>
@@ -47,7 +47,7 @@ const HotelReserveRoom = () => {
             </select>
           </div>
           <div className="mb-3">
-            <label className="form-label" htmlFor="baseRate">Base Rate</label>
+            <label className="form-label" htmlFor="baseRate">Base Rate ({totalFee > 0 ? `${totalFee} Lunaria` : '0 Lunaria'})</label>
             <input className="form-control" id="baseRate" type="text" value={baseRate} readOnly />
           </div>
           <div className="mb-3">
@@ -60,18 +60,18 @@ const HotelReserveRoom = () => {
           </div>
           <div className="mb-3 form-check">
             <input className="form-check-input" id="breakfast" type="checkbox" checked={breakfast} onChange={() => setBreakfast(!breakfast)} />
-            <label className="form-check-label" htmlFor="breakfast">Breakfast Buffet</label>
+            <label className="form-check-label" htmlFor="breakfast">Breakfast Buffet (20 Lunaria)</label>
           </div>
           <div className="mb-3 form-check">
             <input className="form-check-input" id="extraBed" type="checkbox" checked={extraBed} onChange={() => setExtraBed(!extraBed)} />
-            <label className="form-check-label" htmlFor="extraBed">Extra Bed</label>
+ <label className="form-check-label" htmlFor="extraBed">Extra Bed (30 Lunaria)</label>
           </div>
-          <div className="mb-3">
+          <div className="mb-3 ">
             <label className="form-label" htmlFor="request">Special Requests (will be added to the bill):</label>
             <textarea className="form-control" id="request" value={request} onChange={(e) => setRequest(e.target.value)} />
           </div>
           <div className="mb-3">
-            <label className="form-label" htmlFor="totalFee">Total Fee</label>
+            <label className="form-label" htmlFor="totalFee">Total Fee ({totalFee > 0 ? `${totalFee} Lunaria` : '0 Lunaria'})</label>
             <input className="form-control" id="totalFee" type="text" value={totalFee} readOnly />
           </div>
         </form>

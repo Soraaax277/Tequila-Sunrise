@@ -56,7 +56,7 @@ function HotelReserve() {
   const isDateInRange = (date) => {
     const checkin = new Date(checkinDate);
     const checkout = new Date(checkoutDate);
-    return checkin <= date && date <= checkout;
+    return (checkin <= date && date <= checkout && date.getMonth() === calendarMonth && date.getFullYear() === calendarYear) || (checkinDate && new Date(checkinDate).getDate() === date.getDate() && new Date(checkinDate).getMonth() === date.getMonth() && new Date(checkinDate).getFullYear() === date.getFullYear());
   };
 
   const renderCalendar = () => {
@@ -103,91 +103,95 @@ function HotelReserve() {
   };
 
   return (
-    <div className="App">
+    <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '0 auto' }}>
       <div className="steps">
         <div className="step active">CHECK-IN & CHECK-OUT DATE</div>
         <div className="step">SELECT ROOMS & RATES</div>
         <div className="step">GUEST INFORMATION</div>
         <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
       </div>
-      <div>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="form-group">
-              <label htmlFor="checkin">Check-in Date</label>
-              <input
-                className="form-control"
-                id="checkin"
-                type="date"
-                value={checkinDate}
-                onChange={handleCheckinChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="checkout">Check-out Date</label>
-              <input
-                className="form-control"
-                id="checkout"
-                type="date"
-                value={checkoutDate}
-                onChange={handleCheckoutChange}
-              />
-            </div>
+      <div className="row">
+        <div className="col-md-4">
+          <div className="form-group">
+            <label htmlFor="checkin">Check-in Date</label>
+            <input
+              className="form-control"
+              id="checkin"
+              type="date"
+              value={checkinDate}
+              onChange={handleCheckinChange}
+            />
           </div>
-          <div className="col-md-8">
-            <div className="calendar">
-              <div className="calendar-header">
-                <button className="btn btn-link" onClick={handlePrevMonth}>
-                  <i className="fas fa-chevron-left"></i>
-                </button>
-                <span>{getMonthName()} {calendarYear}</span>
-                <button className="btn btn-link" onClick={handleNextMonth}>
-                  <i className="fas fa-chevron-right"></i>
-                </button>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>SUN</th>
-                    <th>MON</th>
-                    <th>TUES</th>
-                    <th>WED</th>
-                    <th>THURS</th>
-                    <th>FRI</th>
-                    <th>SAT</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {renderCalendar().map((week, weekIndex) => (
-                    <tr key={weekIndex}>
-                      {week.map((date, dayIndex) => (
-                        <td
-                          key={dayIndex}
-                          className={
-                            date && (isDateInRange(date) || (checkinDate && new Date(checkinDate).getDate() === date.getDate())) ? 'highlight' : ''
+          <div className="form-group">
+            <label htmlFor="checkout">Check-out Date</label>
+            <input
+              className="form-control"
+              id="checkout"
+              type="date"
+              value={checkoutDate}
+              onChange={handleCheckoutChange}
+            />
+          </div>
+        </div>
+ <div className="col-md-8">
+          <div className="calendar">
+            <div className="calendar-header">
+              <button className="btn btn-link" onClick={handlePrevMonth}>
+                < i className="fas fa-chevron-left "></i>
+              </button>
+              <span>{getMonthName()} {calendarYear}</span>
+              <button className="btn btn-link" onClick={handleNextMonth}>
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <table style={{ borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th style={{ width: 'calc(100% / 7)' }}>SUN</th>
+                  <th style={{ width: 'calc(100% / 7)' }}>MON</th>
+                  <th style={{ width: 'calc(100% / 7)' }}>TUES</th>
+                  <th style={{ width: 'calc(100% / 7)' }}>WED</th>
+                  <th style={{ width: 'calc(100% / 7)' }}>THURS</th>
+                  <th style={{ width: 'calc(100% / 7)' }}>FRI</th>
+                  <th style={{ width: 'calc(100% / 7)' }}>SAT</th>
+                </tr>
+              </thead>
+              <tbody>
+                {renderCalendar().map((week, weekIndex) => (
+                  <tr key={weekIndex}>
+                    {week.map((date, dayIndex) => (
+                      <td
+                        key={dayIndex}
+                        style={{
+                          width: 'calc(100% / 7)',
+                          border: '1px solid #ccc',
+                          padding: '10px',
+                          textAlign: 'center',
+                        }}
+                        className={
+                          date && isDateInRange(date) ? 'highlight' : ''
+                        }
+                        onMouseEnter={(e) => {
+                          if (date && isDateInRange(date)) {
+                            e.target.classList.add('hover-highlight');
                           }
-                          onMouseEnter={(e) => {
-                            if (date && new Date(checkinDate).getDate() === date.getDate()) {
-                              e.target.classList.add('hover-highlight');
-                            }
-                          }}
-                          onMouseLeave={(e) => {
-                            e.target.classList.remove('hover-highlight');
-                          }}
-                        >
-                          {date ? date.getDate() : ''}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.classList.remove('hover-highlight');
+                        }}
+                      >
+                        {date ? date.getDate() : ''}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="text-end mt-3">
-          <Link className="next-button" to="/select-rooms">NEXT</Link>
-        </div>
+      </div>
+      <div className="text-end mt-3">
+        <Link className="next-button" to="/select-rooms">NEXT</Link>
       </div>
     </div>
   );

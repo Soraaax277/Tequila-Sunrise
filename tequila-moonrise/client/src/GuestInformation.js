@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import './App.css';
+import './Stay.css';
+import { Link } from 'react-router-dom';
 
-function App() {
+function GuestInformation() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -62,22 +63,22 @@ function App() {
           <div className="collapse navbar-collapse justify-content-end">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="#">HOME</a>
+                <Link className="nav-link" to="/">HOME</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">ABOUT</a>
+                <Link className="nav-link" to="/about">ABOUT</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="#">STAY</a>
+                <Link className="nav-link active" to="/hotel">STAY</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">DINE</a>
+                <Link className="nav-link" to="/restaurant">DINE</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">CONTACT</a>
+                <Link className="nav-link" to="/contact">CONTACT</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">LOGIN</a>
+                <Link className="nav-link" to="/login">LOGIN</Link>
               </li>
             </ul>
           </div>
@@ -354,14 +355,28 @@ function App() {
                 <option>Zambian</option>
                 <option>Zimbabwean</option>
               </select>
+              {errors.nationality && <div className="error">{errors.nationality}</div>}
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <input type="text" className="form-control" placeholder="Confirm Email Address" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Confirm Email Address"
+                name="confirmEmail"
+                value={formData.confirmEmail}
+                onChange={handleChange}
+              />
+              {errors.confirmEmail && <div className="error">{errors.confirmEmail}</div>}
             </div>
             <div className="col-md-6">
-              <select className="form-control">
+              <select
+                className="form-control"
+                name="arrivalTime"
+                value={formData.arrivalTime}
+                onChange={handleChange}
+              >
                 <option>Estimated Time of Arrival</option>
                 <option>00:00</option>
                 <option>00:30</option>
@@ -429,4 +444,4 @@ function App() {
   );
 }
 
-export default App;
+export default GuestInformation;

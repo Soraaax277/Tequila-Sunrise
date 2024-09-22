@@ -2,7 +2,7 @@ body {
   background-color: black;
   color: white;
   font-family: Arial, sans-serif;
-  margin: 1in; /* Add margin to each side of the website */
+  padding: 20px; /* Add padding to each side of the website */
 }
 
 .navbar {
@@ -47,9 +47,10 @@ body {
 }
 
 .calendar {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  background-color: transparent;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .calendar-header {
@@ -59,6 +60,7 @@ body {
   margin-bottom: 10px;
   color: white;
   font-size: 1.5em;
+  flex-direction: row;
 }
 
 .calendar-header .btn-link {
@@ -67,9 +69,14 @@ body {
   margin: 0 10px;
 }
 
+.calendar-header span {
+  margin: 0 10px;
+}
+
 .calendar table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 10px;
 }
 
 .calendar th,
@@ -89,6 +96,24 @@ body {
   font-size: 1.2em;
   padding: 10px 0;
   text-align: center;
+  margin-bottom: 10px;
+}
+
+td.today {
+  background-color: #3a2fcf;
+}
+
+td.selected {
+  background-color: #5a4fcf;
+}
+
+td.disabled {
+  background-color: #333;
+  color: #666;
+}
+
+td:hover {
+  background-color: #7a6fcf;
 }
 
 .form-group {
@@ -105,7 +130,7 @@ body {
 
 .btn-next, .next-button {
   background-color: #5a4fcf;
-  color: white;
+  color: transparent;
   border: none;
   border-radius: 20px;
   padding: 10px 40px;
@@ -113,7 +138,7 @@ body {
   display: inline-block;
   text-decoration: none;
   text-align: center;
-
+  float: right;
 }
 
 .highlight {
@@ -122,4 +147,10 @@ body {
 
 .hover-highlight {
   background-color: #7a6fcf;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px; /* Add padding to the container */
 }
