@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import VideoBackground from './Background.js';
 import bgVideo from './Starsbg.mp4'; 
 import food1 from './food1.webp';
@@ -13,6 +13,10 @@ import FoodCard from './FoodCard.js';
 import MenuFlipBook from './MenuFlipBook.js';
 
 const Restaurant = () => {
+    const menuRef = useRef(null);
+    const scrollToMenu = () => {
+        menuRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
         <div className='maincontainer'>
@@ -22,7 +26,7 @@ const Restaurant = () => {
             <div>
                 <div className='foodHeader'>
                     <div className='menu'>
-                        <button>Menu</button>
+                        <button onClick={scrollToMenu}>Menu</button>
                     </div>
                     <div className='headerTitle'>
                         <span>Chef's Recommendation</span>
@@ -62,7 +66,9 @@ const Restaurant = () => {
                 </div>
             </div>
 
-            <MenuFlipBook />
+            <div ref={menuRef}>
+                <MenuFlipBook />
+            </div>
 
             
         </div>
