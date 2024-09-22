@@ -109,7 +109,7 @@ button {
   transition: transform 0.5s;
 }
 
-.paper {
+.paper{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -128,6 +128,7 @@ button {
   left: 0;
   transform-origin: left;
   transition: transform 0.5s;
+  object-fit: contain;
 }
 
 .front {
@@ -140,6 +141,12 @@ button {
   z-index: 0;
 }
 
+.front-content img {
+  max-width: 100%;  /* Ensures the image does not overflow horizontally */
+  max-height: 100%; /* Ensures the image does not overflow vertically */
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+}
+
 .front-content,
 .back-content {
   width: 100%;
@@ -147,6 +154,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  object-fit: contain;
 }
 
 .back-content {
@@ -161,13 +169,17 @@ button {
 
 /* Paper stack order */
 #p1 {
-  z-index: 3;
+  z-index: 4;
 }
 
 #p2 {
-  z-index: 2;
+  z-index: 3;
 }
 
 #p3 {
+  z-index: 2;
+}
+
+#p4 {
   z-index: 1;
 }

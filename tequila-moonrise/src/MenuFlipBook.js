@@ -1,18 +1,16 @@
 import React, { useState, useRef } from "react";
 import "./Restaurant.css"; // Ensure your styles are correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowCircleLeft,
-  faArrowCircleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import {faArrowCircleLeft,faArrowCircleRight,} from "@fortawesome/free-solid-svg-icons";
+import frontCover from './leatherTexture.png';
 
 const MenuFlipBook = () => {
   const [currentLocation, setCurrentLocation] = useState(1);
-  const numOfPapers = 3;
+  const numOfPapers = 4;
   const maxLocation = numOfPapers + 1;
 
   const bookRef = useRef(null);
-  const paperRefs = [useRef(null), useRef(null), useRef(null)];
+  const paperRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const openBook = () => {
     bookRef.current.style.transform = "translateX(50%)";
@@ -39,6 +37,10 @@ const MenuFlipBook = () => {
         case 3:
           paperRefs[2].current.classList.add("flipped");
           paperRefs[2].current.style.zIndex = 3;
+          break;
+        case 4:
+          paperRefs[3].current.classList.add("flipped");
+          paperRefs[3].current.style.zIndex = 4;
           closeBook(false);
           break;
         default:
@@ -54,16 +56,21 @@ const MenuFlipBook = () => {
         case 2:
           closeBook(true);
           paperRefs[0].current.classList.remove("flipped");
-          paperRefs[0].current.style.zIndex = 3;
+          paperRefs[0].current.style.zIndex = 4;
           break;
         case 3:
           paperRefs[1].current.classList.remove("flipped");
-          paperRefs[1].current.style.zIndex = 2;
+          paperRefs[1].current.style.zIndex = 3;
           break;
         case 4:
           openBook();
           paperRefs[2].current.classList.remove("flipped");
-          paperRefs[2].current.style.zIndex = 1;
+          paperRefs[2].current.style.zIndex = 2;
+          break;
+        case 5:
+          openBook();
+          paperRefs[3].current.classList.remove("flipped");
+          paperRefs[3].current.style.zIndex = 1;
           break;
         default:
           throw new Error("unknown state");
@@ -84,7 +91,7 @@ const MenuFlipBook = () => {
               
               <div className="front">
                 <div id="f1" className="front-content">
-                  <h1>Front 1</h1>
+                  <img src={frontCover} alt="frontCover" />
                 </div>
               </div>
               
@@ -125,7 +132,24 @@ const MenuFlipBook = () => {
                   <h1>Back 3</h1>
                 </div>
               </div>
+
+            </div>
+
+            {/* Paper 4 */}
+            <div id="p4" className="paper" ref={paperRefs[3]}>
               
+              <div className="front">
+                <div id="f4" className="front-content">
+                  <h1>Front 4</h1>
+                </div>
+              </div>
+              
+              <div className="back">
+                <div id="b4" className="back-content">
+                  <h1>Back 4</h1>
+                </div>
+              </div>
+
             </div>
 
           </div>
