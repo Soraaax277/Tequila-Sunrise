@@ -2,7 +2,6 @@ body {
   background-color: black;
   color: white;
   font-family: Arial, sans-serif;
-  margin: 1in; /* Add margin to each side of the website */
 }
 
 .navbar {
@@ -46,49 +45,10 @@ body {
   clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%, 10% 50%);
 }
 
-.calendar {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.calendar-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-  color: white;
-  font-size: 1.5em;
-}
-
-.calendar-header .btn-link {
-  color: white;
-  font-size: 1.5em;
-  margin: 0 10px;
-}
-
-.calendar table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.calendar th,
-.calendar td {
-  border: 1px solid #5a4fcf;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  text-align: center;
-  color: white;
-}
-
-.calendar th {
-  background-color: #5a4fcf;
-}
-
-.month-header {
-  background-color: #3a2fcf;
-  font-size: 1.2em;
-  padding: 10px 0;
-  text-align: center;
 }
 
 .form-group {
@@ -103,23 +63,23 @@ body {
   padding: 10px 20px;
 }
 
+.room-image {
+  width: 100%;
+  border: 1px solid #5a4fcf;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .btn-next, .next-button {
   background-color: #5a4fcf;
   color: white;
   border: none;
   border-radius: 20px;
-  padding: 10px 40px;
+  padding: 10px 20px;
   margin-top: 20px;
-  display: inline-block;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   text-decoration: none;
   text-align: center;
-
-}
-
-.highlight {
-  background-color: #3a2fcf;
-}
-
-.hover-highlight {
-  background-color: #7a6fcf;
 }

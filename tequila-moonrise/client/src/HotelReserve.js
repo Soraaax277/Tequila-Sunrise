@@ -136,19 +136,17 @@ function HotelReserve() {
           </div>
           <div className="col-md-8">
             <div className="calendar">
+              <div className="calendar-header">
+                <button className="btn btn-link" onClick={handlePrevMonth}>
+                  <i className="fas fa-chevron-left"></i>
+                </button>
+                <span>{getMonthName()} {calendarYear}</span>
+                <button className="btn btn-link" onClick={handleNextMonth}>
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </div>
               <table>
                 <thead>
-                  <tr>
-                    <th colSpan="7" className="month-header">
-                      <button className="btn btn-link" onClick={handlePrevMonth}>
-                        <i className="fas fa-chevron-left"></i>
-                      </button>
-                      {getMonthName()} {calendarYear}
-                      <button className="btn btn-link" onClick={handleNextMonth}>
-                        <i className="fas fa-chevron-right"></i>
-                      </button>
-                    </th>
-                  </tr>
                   <tr>
                     <th>SUN</th>
                     <th>MON</th>
