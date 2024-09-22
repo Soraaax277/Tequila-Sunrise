@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './Stay.css';
 import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function GuestInformation() {
   const [formData, setFormData] = useState({
@@ -11,8 +13,8 @@ function GuestInformation() {
     gender: '',
     birthdate: '',
     email: '',
-    nationality: '',
     confirmEmail: '',
+    nationality: '',
     arrivalTime: '',
     contactNumber: '',
     address: ''
@@ -25,6 +27,13 @@ function GuestInformation() {
     setFormData({
       ...formData,
       [name]: value
+    });
+  };
+
+  const handleDateChange = (date) => {
+    setFormData({
+      ...formData,
+      birthdate: date
     });
   };
 
@@ -48,42 +57,7 @@ function GuestInformation() {
   };
 
   return (
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img
-              src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-nVSJ2KTmabFDVkEk6bbRE8Jv.png?st=2024-09-21T11%3A32%3A20Z&se=2024-09-21T13%3A32%3A20Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-20T23%3A19%3A23Z&ske=2024-09-21T23%3A19%3A23Z&sks=b&skv=2024-08-04&sig=Ks06xT3m7bgT6lKFZSAwafAGd1ueGLC1IXJalXmP4XU%3D"
-              alt="Tequila Moonrise Logo"
-              height="50"
-              width="50"
-            />
-            TEQUILA MOONRISE
-          </a>
-          <div className="collapse navbar-collapse justify-content-end">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="/">HOME</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">ABOUT</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/hotel">STAY</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/restaurant">DINE</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact">CONTACT</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">LOGIN</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className="container" style={{ maxWidth: '800px', margin: '40px auto', backgroundColor: 'transparent', padding: '20px', border: '1px solid #ccc', borderRadius: '10px' }}>
       <div className="steps">
         <div className="step">CHECK-IN & CHECK-OUT DATE</div>
         <div className="step">SELECT ROOMS & RATES</div>
@@ -132,13 +106,11 @@ function GuestInformation() {
               {errors.gender && <div className="error">{errors.gender}</div>}
             </div>
             <div className="col-md-6">
-              <input
-                type="text"
+              <DatePicker
+                selected={formData.birthdate}
+                onChange={handleDateChange}
                 className="form-control"
-                placeholder="Birthdate"
-                name="birthdate"
-                value={formData.birthdate}
-                onChange={handleChange}
+                placeholderText="Birthdate"
               />
               {errors.birthdate && <div className="error">{errors.birthdate}</div>}
             </div>
@@ -155,6 +127,19 @@ function GuestInformation() {
               />
               {errors.email && <div className="error">{errors.email}</div>}
             </div>
+            <div className="col-md-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Confirm Email Address"
+                name="confirmEmail"
+                value={formData.confirmEmail}
+                onChange={handleChange}
+              />
+              {errors.confirmEmail && <div className="error">{errors.confirmEmail}</div>}
+            </div>
+          </div>
+          <div className="row">
             <div className="col-md-6">
               <select
                 className="form-control"
@@ -329,7 +314,7 @@ function GuestInformation() {
                 <option>Sri Lankan</option>
                 <option>Sudanese</option>
                 <option>Surinamer</option>
-                <option>Swazi</option>
+ <option>Swazi</option>
                 <option>Swedish</option>
                 <option>Swiss</option>
                 <option>Syrian</option>
@@ -359,17 +344,6 @@ function GuestInformation() {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Confirm Email Address"
-                name="confirmEmail"
-                value={formData.confirmEmail}
-                onChange={handleChange}
-              />
-              {errors.confirmEmail && <div className="error">{errors.confirmEmail}</div>}
-            </div>
             <div className="col-md-6">
               <select
                 className="form-control"
@@ -428,13 +402,29 @@ function GuestInformation() {
                 <option>23:30</option>
               </select>
             </div>
+            <div className="col-md-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Contact Number"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleChange}
+              />
+              {errors.contactNumber && <div className="error">{errors.contactNumber}</div>}
+            </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <input type="text" className="form-control" placeholder="Contact Number" />
-            </div>
-            <div className="col-md-6">
-              <input type="text" className="form-control" placeholder="Address" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+              />
+              {errors.address && <div className="error">{errors.address}</div>}
             </div>
           </div>
           <button type="submit" className="btn btn-next">NEXT</button>
