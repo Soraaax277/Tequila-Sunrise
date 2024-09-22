@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import './Hotel_Reserve_Rooms.css';
+import './Stay.css';
+import { Link } from 'react-router-dom';
 
 const rooms = [
   { id: 1, name: 'Room 1', price: 100, image: 'https://placehold.co/200x150?text=Room+1', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning'] },
@@ -10,7 +11,7 @@ const rooms = [
   { id: 4, name: 'Room 4', price: 250, image: 'https://placehold.co/200x150?text=Room+4', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
 ];
 
-const App = () => {
+const HotelReserveRoom = () => {
   const [adults, setAdults] = useState(1);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [breakfast, setBreakfast] = useState(false);
@@ -24,60 +25,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img
-              src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-wZGylhENnxNN00Lg6rqHNzaM.png?st=2024-09-21T07%3A51%3A01Z&se=2024-09-21T09%3A51%3A01Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-20T23%3A44%3A58Z&ske=2024-09-21T23%3A44%3A58Z&sks=b&skv=2024-08-04&sig=tVDwbShvvNGi8cQa1YJNebDVr1/R%2BKzigOqmb1BugCU%3D"
-              alt="Tequila Moonrise Logo"
-              height="50"
-              width="50"
-            />
-            TEQUILA MOONRISE
-          </a>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  HOME
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  ABOUT
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="#">
-                  STAY
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  DINE
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  CONTACT
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  LOGIN
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
       <div className="steps">
         <div className="step">CHECK-IN & CHECK-OUT DATE</div>
         <div className="step active">SELECT ROOMS & RATES</div>
         <div className="step">GUEST INFORMATION</div>
         <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
       </div>
-      <div className="container">
+      <div>
         <form>
           <div className="mb-3">
             <label className="form-label" htmlFor="adults">Number of Adults</label>
@@ -132,11 +86,11 @@ const App = () => {
           </div>
         </div>
         <div className="text-end mt-3">
-          <a className="next-button" href="/next-step">NEXT</a>
+          <Link className="next-button" to="/guest-information">NEXT</Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default App;
+export default HotelReserveRoom;

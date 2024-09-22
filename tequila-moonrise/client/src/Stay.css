@@ -95,7 +95,7 @@ body {
   padding: 10px 20px;
 }
 
-.btn-next {
+.btn-next, .next-button {
   background-color: #5a4fcf;
   color: white;
   border: none;
@@ -105,6 +105,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  text-decoration: none;
+  text-align: center;
 }
 
 .highlight {
@@ -113,4 +115,11 @@ body {
 
 .hover-highlight {
   background-color: #7a6fcf;
+}
+
+.room-image {
+  width: 100%;
+  border: 1px solid #5a4fcf;
+  border-radius: 10px;
+  cursor: pointer;
 }
