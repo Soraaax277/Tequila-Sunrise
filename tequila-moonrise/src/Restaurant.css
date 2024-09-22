@@ -147,6 +147,12 @@ button {
   object-fit: contain; /* Ensures the image maintains its aspect ratio */
 }
 
+.back-content img {
+  max-width: 100%;  /* Ensures the image does not overflow horizontally */
+  max-height: 100%; /* Ensures the image does not overflow vertically */
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+}
+
 .front-content,
 .back-content {
   width: 100%;

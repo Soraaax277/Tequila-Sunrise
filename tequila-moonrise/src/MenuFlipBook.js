@@ -2,7 +2,15 @@ import React, { useState, useRef } from "react";
 import "./Restaurant.css"; // Ensure your styles are correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faArrowCircleLeft,faArrowCircleRight,} from "@fortawesome/free-solid-svg-icons";
-import frontCover from './leatherTexture.png';
+import frontCover from './Menu1.png';
+import page1back from './Menu2.png';
+import page2front from './Menu3.png';
+import page2back from './Menu4.png';
+import page3front from './Menu5.png';
+import page3back from './Menu6.png';
+import page4front from './Menu7.png';
+import page4back from './Menu8.png';
+
 
 const MenuFlipBook = () => {
   const [currentLocation, setCurrentLocation] = useState(1);
@@ -91,13 +99,13 @@ const MenuFlipBook = () => {
               
               <div className="front">
                 <div id="f1" className="front-content">
-                  <img src={frontCover} alt="frontCover" />
+                  <img src={frontCover} alt="menu cover" />
                 </div>
               </div>
               
               <div className="back">
                 <div id="b1" className="back-content">
-                  <h1>Back 1</h1>
+                <img src={page1back} alt="Hors d’Oeuvre and Amuse-Bouche" />
                 </div>
               </div>
             </div>
@@ -107,13 +115,13 @@ const MenuFlipBook = () => {
               
               <div className="front">
                 <div id="f2" className="front-content">
-                  <h1>Front 2</h1>
+                <img src={page2front} alt="Soup and Appetizer" />
                 </div>
               </div>
               
               <div className="back">
                 <div id="b2" className="back-content">
-                  <h1>Back 2</h1>
+                <img src={page2back} alt="Salad and Fish" />
                 </div>
               </div>
             </div>
@@ -123,13 +131,13 @@ const MenuFlipBook = () => {
               
               <div className="front">
                 <div id="f3" className="front-content">
-                  <h1>Front 3</h1>
+                <img src={page3front} alt="First Main Course and Palate Cleanser" />
                 </div>
               </div>
               
               <div className="back">
                 <div id="b3" className="back-content">
-                  <h1>Back 3</h1>
+                <img src={page3front} alt="Second Main Course and Cheese Course" />
                 </div>
               </div>
 
@@ -140,13 +148,13 @@ const MenuFlipBook = () => {
               
               <div className="front">
                 <div id="f4" className="front-content">
-                  <h1>Front 4</h1>
+                <img src={page4front} alt="Dessert and Mignardise" />
                 </div>
               </div>
               
               <div className="back">
                 <div id="b4" className="back-content">
-                  <h1>Back 4</h1>
+                <img src={page4back} alt="backCover" />
                 </div>
               </div>
 
