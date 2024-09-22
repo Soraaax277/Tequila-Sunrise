@@ -1,22 +1,27 @@
 import React, { useRef } from 'react';
 import VideoBackground from './Background.js';
 import bgVideo from './Starsbg.mp4'; 
-import food1 from './food1.webp';
-import food2 from './food2.webp';
-import food3 from './food3.jpg';
-import food4 from './food4.jpg';
+import food1 from './food1.png';
+import food2 from './food2.png';
+import food3 from './food3.png';
+import food4 from './food4.png';
 import './Background.css';
 import './Restaurant.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodCard from './FoodCard.js';
-
 import MenuFlipBook from './MenuFlipBook.js';
+import RestoReserveForm from './Restaurant_Reserve.js';
 
 const Restaurant = () => {
     const menuRef = useRef(null);
+    const reserveRef = useRef(null);
     const scrollToMenu = () => {
         menuRef.current.scrollIntoView({ behavior: 'smooth' });
     };
+    const scrollToReserve = () => {
+        reserveRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+    
 
     return (
         <div className='maincontainer'>
@@ -26,7 +31,8 @@ const Restaurant = () => {
             <div>
                 <div className='foodHeader'>
                     <div className='menu'>
-                        <button onClick={scrollToMenu}>Menu</button>
+                        <button  onClick={scrollToMenu}>Menu</button>
+                        <button  onClick={scrollToReserve}>Reserve</button>
                     </div>
                     <div className='headerTitle'>
                         <span>Chef's Recommendation</span>
@@ -68,6 +74,10 @@ const Restaurant = () => {
 
             <div ref={menuRef}>
                 <MenuFlipBook />
+            </div>
+
+            <div ref={reserveRef}>
+                <RestoReserveForm />
             </div>
 
             

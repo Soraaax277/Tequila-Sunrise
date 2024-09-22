@@ -105,7 +105,7 @@ const MenuFlipBook = () => {
               
               <div className="back">
                 <div id="b1" className="back-content">
-                <img src={page1back} alt="Hors d’Oeuvre and Amuse-Bouche" />
+                <img src={page1back} alt="Hors dOeuvre and Amuse-Bouche" />
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ const MenuFlipBook = () => {
               
               <div className="back">
                 <div id="b3" className="back-content">
-                <img src={page3front} alt="Second Main Course and Cheese Course" />
+                <img src={page3back} alt="Second Main Course and Cheese Course" />
                 </div>
               </div>
 
