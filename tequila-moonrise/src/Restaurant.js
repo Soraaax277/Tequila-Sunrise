@@ -31,8 +31,8 @@ const Restaurant = () => {
             <div>
                 <div className='foodHeader'>
                     <div className='menu'>
-                        <button  onClick={scrollToMenu}>Menu</button>
-                        <button  onClick={scrollToReserve}>Reserve</button>
+                        <button className='btnHeader' onClick={scrollToMenu}>Menu</button>
+                        <button  className='btnHeader' onClick={scrollToReserve}>Reserve</button>
                     </div>
                     <div className='headerTitle'>
                         <span>Chef's Recommendation</span>
