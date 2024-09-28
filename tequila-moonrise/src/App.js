@@ -6,6 +6,7 @@ import HotelReserve from './HotelReserve';
 import HotelReserveRoom from './HotelReserveRoom';
 import GuestInformation from './GuestInformation';
 import BookingConfirmation from './BookingConfirmation';
+import Restaurant from './Restaurant';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
@@ -48,9 +49,6 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">LOGIN</Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/register">REGISTER</Link>
-                </li>
               </ul>
             </div>
           </div>
@@ -61,7 +59,7 @@ function App() {
           <Route path="/about" element={<div>About us</div>} />
           <Route path="/hotel" element={<HotelReserve />} />
           <Route path="/select-rooms" element={<HotelReserveRoom />} />
-          <Route path="/restaurant" element={<div>Restaurant</div>} />
+          <Route path="/dine" element={<Restaurant />} />
           <Route path="/contact" element={<div>Contact us</div>} />
           <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
