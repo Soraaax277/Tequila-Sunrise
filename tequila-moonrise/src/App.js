@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Switch, Link } from 'react-router-dom';
 import Register from './Register'; 
 import Login from './Login';
 import HotelReserve from './HotelReserve';
@@ -7,12 +7,18 @@ import HotelReserveRoom from './HotelReserveRoom';
 import GuestInformation from './GuestInformation';
 import BookingConfirmation from './BookingConfirmation';
 import Restaurant from './Restaurant';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
+import FoodCard from './FoodCard';
+import MenuFlipBook from './MenuFlipBook';
+import RestoReserveForm from './Restaurant_Reserve';
+import VideoBackground from './Background';
 import './App.css';
 import './Stay.css';
 import './HotelReserveRoom.css';
 import './BookingConfirmation.css';
+import './Restaurant.css';
+import './Background.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
   return (
@@ -55,11 +61,11 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<div>Welcome to our hotel!</div>} />
+          <Route path="/" exact element={<div>Welcome to our hotel!</div>} />
           <Route path="/about" element={<div>About us</div>} />
           <Route path="/hotel" element={<HotelReserve />} />
           <Route path="/select-rooms" element={<HotelReserveRoom />} />
-          <Route path="/dine" element={<Restaurant />} />
+          <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/contact" element={<div>Contact us</div>} />
           <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
