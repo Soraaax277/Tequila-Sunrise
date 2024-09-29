@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import Register from './Register'; 
 import Login from './Login';
 import HotelReserve from './HotelReserve';
@@ -38,22 +38,58 @@ function App() {
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">HOME</Link>
+                  <NavLink 
+                    to="/" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    HOME
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">ABOUT</Link>
+                  <NavLink 
+                    to="/about" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    ABOUT
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/hotel">STAY</Link>
+                  <NavLink 
+                    to="/hotel" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    STAY
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/restaurant">DINE</Link>
+                  <NavLink 
+                    to="/restaurant" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    DINE
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/contact">CONTACT</Link>
+                  <NavLink 
+                    to="/contact" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    CONTACT
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">LOGIN</Link>
+                  <NavLink 
+                    to="/login" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    LOGIN
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -70,7 +106,7 @@ function App() {
           <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+          <Route path="/booking-confirmation" element={< BookingConfirmation />} />
         </Routes>
       </div>
     </BrowserRouter>

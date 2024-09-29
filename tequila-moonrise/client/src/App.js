@@ -1,17 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import Register from './Register'; 
 import Login from './Login';
 import HotelReserve from './HotelReserve';
 import HotelReserveRoom from './HotelReserveRoom';
 import GuestInformation from './GuestInformation';
 import BookingConfirmation from './BookingConfirmation';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
+import Restaurant from './Restaurant';
+import FoodCard from './FoodCard';
+import MenuFlipBook from './MenuFlipBook';
+import RestoReserveForm from './Restaurant_Reserve';
+import VideoBackground from './Background';
 import './App.css';
 import './Stay.css';
 import './HotelReserveRoom.css';
 import './BookingConfirmation.css';
+import './Restaurant.css';
+import './Background.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
   return (
@@ -31,25 +38,58 @@ function App() {
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">HOME</Link>
+                  <NavLink 
+                    to="/" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    HOME
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">ABOUT</Link>
+                  <NavLink 
+                    to="/about" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    ABOUT
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/hotel">STAY</Link>
+                  <NavLink 
+                    to="/hotel" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    STAY
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/restaurant">DINE</Link>
+                  <NavLink 
+                    to="/restaurant" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    DINE
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/contact">CONTACT</Link>
+                  <NavLink 
+                    to="/contact" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    CONTACT
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">LOGIN</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/register">REGISTER</Link>
+                  <NavLink 
+                    to="/login" 
+                    className="nav-link" 
+                    activeClassName="active"
+                  >
+                    LOGIN
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -57,16 +97,16 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<div>Welcome to our hotel!</div>} />
+          <Route path="/" exact element={<div>Welcome to our hotel!</div>} />
           <Route path="/about" element={<div>About us</div>} />
           <Route path="/hotel" element={<HotelReserve />} />
           <Route path="/select-rooms" element={<HotelReserveRoom />} />
-          <Route path="/restaurant" element={<div>Restaurant</div>} />
+          <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/contact" element={<div>Contact us</div>} />
           <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+          <Route path="/booking-confirmation" element={< BookingConfirmation />} />
         </Routes>
       </div>
     </BrowserRouter>
