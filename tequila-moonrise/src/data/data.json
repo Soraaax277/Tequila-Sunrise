@@ -1,0 +1,182 @@
+{
+  "Header": {
+    "title": "Welcome to Tequila Moonrise",
+    "paragraph": "Taste the Cosmos, Rest among the stars."
+  },
+  "About": {
+    "paragraph": "Welcome to Tequila Moonrise, where dining and accommodation transcend earthly boundaries. Nestled among the stars, our hotel restaurant invites you to embark on an extraordinary culinary journey. Enjoy our alien-inspired cuisine, carefully crafted to offer a taste of the cosmos. With a commitment to excellence and a passion for innovation, we aim to provide an experience that is out of this world. Join us for a cosmic adventure where every meal is a celebration and every stay is a stellar escape.",
+    "Why": [
+      "Unique Culinary Experience",
+      "Futuristic Accomodations",
+      "Impeccable Service",
+      "Innovative Technology"
+    ],
+    "Why2": [
+      "Memorable Events",
+      "Sustainable Practices",
+      "Space-Themed Atmosphere",
+      "Exclusive Culinary Events"
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/01-large.jpg",
+      "smallImage": "img/portfolio/01-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/02-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/03-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/04-large.jpg",
+      "smallImage": "img/portfolio/04-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/05-large.jpg",
+      "smallImage": "img/portfolio/05-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/06-large.jpg",
+      "smallImage": "img/portfolio/06-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/07-large.jpg",
+      "smallImage": "img/portfolio/07-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/08-large.jpg",
+      "smallImage": "img/portfolio/08-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/09-large.jpg",
+      "smallImage": "img/portfolio/09-small.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-wordpress",
+      "name": "Intergalactic Dining",
+      "text": "Enjoy a unique dining experience with our alien-inspired menu, featuring innovative dishes that blend cosmic ingredients for a flavor explosion."
+    },
+    {
+      "icon": "fa fa-cart-arrow-down",
+      "name": "Luxury Accommodations",
+      "text": "Relax in our stylish, futuristic rooms designed for comfort and luxury, offering stunning views of the starry sky."
+    },
+    {
+      "icon": "fa fa-cloud-download",
+      "name": "Event Hosting",
+      "text": "Celebrate special occasions in our cosmic setting, whether it’s a wedding, corporate event, or private party. Our team will ensure your event is truly memorable."
+    },
+    {
+      "icon": "fa fa-language",
+      "name": "Guided Tours",
+      "text": "Join our virtual or in-person tours that take you through the wonders of Tequila Moonrise, highlighting our unique cuisine and accommodations."
+    },
+    {
+      "icon": "fa fa-plane",
+      "name": "Cosmic Spa & Wellness",
+      "text": "Rejuvenate your body and mind at our exclusive space-themed spa, where you can enjoy relaxing treatments inspired by the mysteries of the universe. Our cosmic wellness programs are designed to offer the ultimate relaxation, helping you recharge like a star."
+    },
+    {
+      "icon": "fa fa-pie-chart",
+      "name": "Astronomy Nights",
+      "text": "Join us for stargazing events on our observation deck, complete with high-powered telescopes and guided astronomy sessions. Whether you're a seasoned stargazer or just curious, this unique experience brings you closer to the beauty of the cosmos."
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "\"Tequila Moonrise was an incredible experience! The food is truly out of this world! I’ve never tasted anything like their Nebula Nachos. It’s a must-try!\"",
+      "name": "Luna S."
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "\"The rooms were amazing—luxurious and spacious with a perfect view of the stars! I could watch the night sky from my bed. I can’t wait to return!\"",
+      "name": "Stellar J."
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"I had the most delightful dinner at Tequila Moonrise. The Galactic Guacamole was fresh and flavorful. The service was stellar, too!\"",
+      "name": "Nova T."
+    },
+    {
+      "img": "img/testimonials/04.jpg",
+      "text": "\"Every dish we tried was exquisite! The Cosmic Curry is now my favorite dish. If you’re looking for an unforgettable dining experience, this is it!\"",
+      "name": "Astrid V."
+    },
+    {
+      "img": "img/testimonials/05.jpg",
+      "text": "\"Our stay at Tequila Moonrise was phenomenal! The rooms were so cozy, and the space-themed decor added an exciting touch. I would recommend it to anyone looking for a unique getaway.\"",
+      "name": "Orion K."
+    },
+    {
+      "img": "img/testimonials/06.jpg",
+      "text": "\"From the moment we walked in, we felt like we were on another planet. The ambiance is stunning, and the food is simply divine! Can't wait for my next visit!\"",
+      "name": "Celestial P."
+    }
+  ],
+  "Team": [{
+    "img": "img/team/01.jpg",
+    "name": "Jacob Lopez",
+    "job": "Director"
+},
+{
+    "img": "img/team/02.jpg",
+    "name": "Mica Santiago",
+    "job": "Senior Designer"
+}, {
+    "img": "img/team/03.jpg",
+    "name": "Reese Roque",
+    "job": "Senior Designer"
+},
+{
+    "img": "img/team/04.jpg",
+    "name": "Marc-Ace Edu",
+    "job": "Project Manager"
+}
+  ],
+  "Contact": {
+    "address": "Tequila Moonrise, Lunar Crater Lane, Moon Base Alpha, Sector 7",
+    "phone": "+00 737 888 0928",
+    "email": "tequilamoonrisecontact@gmail.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com"
+  },
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "title": "WALA",
+      "text": "Place holder."
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "title": "PA",
+      "text": "Place holder."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "DITO",
+      "text": "Place holder."
+    },
+    {
+      "icon": "fa fa-magic",
+      "title": ":(",
+      "text": "Place holder."
+    }
+  ]
+}
