@@ -3,12 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './HotelReserve.css';
 import { Link } from 'react-router-dom';
+import RoomLayout from './RoomLayout.png';
+import Room1 from './room1.jpg';
+import Room2 from './room2.jpg';
+import Room3 from './room3.jpg';
+import Room4 from './room4.jpg';
 
 const rooms = [
-  { id: 1, name: 'Room 1', price: 100, image: 'https://placehold.co/200x150?text=Room+1', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning'] },
-  { id: 2, name: 'Room 2', price: 150, image: 'https://placehold.co/200x150?text=Room+2', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar'] },
-  { id: 3, name: 'Room 3', price: 200, image: 'https://placehold.co/200x150?text=Room+3', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view'] },
-  { id: 4, name: 'Room 4', price: 250, image: 'https://placehold.co/200x150?text=Room+4', inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
+  { id: 1, name: 'Room 1', price: 100, image: Room1, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning'] },
+  { id: 2, name: 'Room 2', price: 150, image: Room2, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar'] },
+  { id: 3, name: 'Room 3', price: 200, image: Room3, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view'] },
+  { id: 4, name: 'Room 4', price: 250, image: Room4, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
 ];
 
 const HotelReserveRoom = () => {
@@ -77,7 +82,7 @@ const HotelReserveRoom = () => {
         </form>
         <div className="row">
           <div className="col-md-8">
-            <img className="room-image" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-UgEkKwPC6taDZRTUgCEuoLzN.png?st=2024-09-21T09%3A44%3A13Z&se=2024-09-21T11%3A44%3A13Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-21T02%3A53%3A15Z&ske=2024-09-22T02%3A53%3A15Z&sks=b&skv=2024-08-04&sig=6CRLY9C7ufJ3Owitwk0RsKw6N%2BqLJBHxKVqeiJm0/J4%3D" alt="Room layout image" />
+            <img className="room-image" src={RoomLayout} alt="Room layout image" />
           </div>
           <div className="col-md-4">
             {rooms.map(room => (

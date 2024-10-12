@@ -144,49 +144,52 @@ function HotelReserve() {
                 <i className="fas fa-chevron-right"></i>
               </button>
             </div>
-            <table style={{ borderCollapse: 'collapse' }}>
-              <thead>
-                <tr>
-                  <th style={{ width: 'calc(100% / 7)' }}>SUN</th>
-                  <th style={{ width: 'calc(100% / 7)' }}>MON</th>
-                  <th style={{ width: 'calc(100% / 7)' }}>TUES</th>
-                  <th style={{ width: 'calc(100% / 7)' }}>WED</th>
-                  <th style={{ width: 'calc(100% / 7)' }}>THURS</th>
-                  <th style={{ width: 'calc(100% / 7)' }}>FRI</th>
-                  <th style={{ width: 'calc(100% / 7)' }}>SAT</th>
-                </tr>
-              </thead>
-              <tbody>
-                {renderCalendar().map((week, weekIndex) => (
-                  <tr key={weekIndex}>
-                    {week.map((date, dayIndex) => (
-                      <td
-                        key={dayIndex}
-                        style={{
-                          width: 'calc(100% / 7)',
-                          border: '1px solid #ccc',
-                          padding: '10px',
-                          textAlign: 'center',
-                        }}
-                        className={
-                          date && isDateInRange(date) ? 'highlight' : ''
-                        }
-                        onMouseEnter={(e) => {
-                          if (date && isDateInRange(date)) {
-                            e.target.classList.add('hover-highlight');
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.classList.remove('hover-highlight');
-                        }}
-                      >
-                        {date ? date.getDate() : ''}
-                      </td>
-                    ))}
+            <div className='table-container'>
+              <table style={{ borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr>
+                    <th style={{ width: 'calc(100% / 7)' }}>SUN</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>MON</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>TUES</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>WED</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>THURS</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>FRI</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>SAT</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {renderCalendar().map((week, weekIndex) => (
+                    <tr key={weekIndex}>
+                      {week.map((date, dayIndex) => (
+                        <td
+                          key={dayIndex}
+                          style={{
+                            width: 'calc(100% / 7)',
+                            border: '1px solid #ccc',
+                            padding: '10px',
+                            textAlign: 'center',
+                          }}
+                          className={
+                            date && isDateInRange(date) ? 'highlight' : ''
+                          }
+                          onMouseEnter={(e) => {
+                            if (date && isDateInRange(date)) {
+                              e.target.classList.add('hover-highlight');
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.classList.remove('hover-highlight');
+                          }}
+                        >
+                          {date ? date.getDate() : ''}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
           </div>
         </div>
       </div>
