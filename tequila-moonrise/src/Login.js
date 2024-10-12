@@ -58,6 +58,7 @@ const Login = () => {
             onChange={handleChange}
           />
           {errors.password && <p className="error">{errors.password}</p>}
+          <a href="#" className="register-link">Forgot password?</a>
         </div>
         <button type="submit">Login</button>
       </form>

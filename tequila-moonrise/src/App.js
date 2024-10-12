@@ -10,6 +10,7 @@ import Restaurant from './Restaurant';
 import VideoBackground from './Background';
 import Navbar from './Navbar';
 import Stay from './Stay';
+import bgVideo from './Starsbg.mp4'; 
 import './App.css';
 import './HotelReserve.css';
 import './HotelReserveRoom.css';
@@ -24,6 +25,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar />
+        
+        <VideoBackground videoSrc={bgVideo} />
 
         <Routes>
           <Route path="/" exact element={<div>Welcome to our hotel!</div>} />

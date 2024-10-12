@@ -26,7 +26,6 @@ const Restaurant = () => {
 
     return (
         <div className='maincontainer'>
-            <VideoBackground videoSrc={bgVideo} />
 
             <div className='restoHeaderContainer'>
                 <div className='carouselContainer'>
