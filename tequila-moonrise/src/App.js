@@ -1,45 +1,48 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
-import Register from './Pages/Register'; 
-import Login from './Pages/Login';
-import HotelReserve from './Pages/HotelReserve';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import Register from './Register'; 
+import Login from './Login';
+import HotelReserve from './HotelReserve';
+import HotelReserveRoom from './HotelReserveRoom';
+import GuestInformation from './GuestInformation';
+import BookingConfirmation from './BookingConfirmation';
+import Restaurant from './Restaurant';
+import VideoBackground from './Background';
+import Navbar from './Navbar';
+import Stay from './Stay';
+import bgVideo from './Starsbg.mp4'; 
 import './App.css';
-
+import './HotelReserve.css';
+import './HotelReserveRoom.css';
+import './BookingConfirmation.css';
+import './Restaurant.css';
+import './Background.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/hotel">Stay</Link>
-            </li>
-            <li>
-              <Link to="/restaurant">Dine</Link> 
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </nav>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        
+        <VideoBackground videoSrc={bgVideo} />
 
         <Routes>
+          <Route path="/" exact element={<div>Welcome to our hotel!</div>} />
+          <Route path="/about" element={<div>About us</div>} />
+          <Route path="/stay" element={<Stay />} />
+          <Route path="/hotel" element={<HotelReserve />} />
+          <Route path="/select-rooms" element={<HotelReserveRoom />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/contact" element={<div>Contact us</div>} />
+          <Route path="/guest-information" element={<GuestInformation />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/hotel" element={<HotelReserve/>} />
+          <Route path="/booking-confirmation" element={< BookingConfirmation />} />
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

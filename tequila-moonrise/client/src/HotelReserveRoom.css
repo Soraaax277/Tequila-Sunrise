@@ -1,0 +1,85 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  border-bottom: 1px solid white;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: bold;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.step {
+  background-color: #5a4fcf;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  position: relative;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%);
+}
+
+.step.active {
+  background-color: #3a2fcf;
+}
+
+.step:last-child {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%, 10% 50%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin: 20px 0;
+}
+
+.form-control {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.room-image {
+  width: 100%;
+  border: 1px solid #5a4fcf;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-next, .next-button {
+  background-color: #5a4fcf;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  text-align: center;
+}
