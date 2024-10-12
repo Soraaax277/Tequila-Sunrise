@@ -48,29 +48,29 @@ const Restaurant = () => {
                 <div className='foodCard'>
                     <RestaurantFoodCard
                         imageSrc={food1}
-                        foodname="Food 1"
-                        fooddescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        foodname="Savory Surf and Turf"
+                        fooddescription="Tender, grilled steak and succulent shrimp, perfectly seasoned and grilled to perfection"
                     />
                 </div>
                 <div className='foodCard'>
                     <RestaurantFoodCard
                         imageSrc={food2}
-                        foodname="Food 2"
-                        fooddescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        foodname="Buttered Lobster Delight"
+                        fooddescription="Ultimate luxury with our succulent lobster, lightly steamed to preserve its natural sweetness and drizzled with rich, melted butter"
                     />
                 </div>
                 <div className='foodCard'>
                     <RestaurantFoodCard
                         imageSrc={food3}
-                        foodname="Food 3"
-                        fooddescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        foodname="Hearty Meat and Vegetable Medley"
+                        fooddescription="Perfectly seared meat wrapped around a vibrant assortment of seasonal vegetables"
                     />
                 </div>
                 <div className='foodCard'>
                     <RestaurantFoodCard
                         imageSrc={food4}
-                        foodname="Food 4"
-                        fooddescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        foodname="Tomato Sunrise"
+                        fooddescription="Ripe, juicy tomatoes layered with creamy, melted cheese"
                     />
                 </div>
             </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import CarouselImage1 from './restaurantimage1.png';
 import CarouselImage2 from './restaurantimage2.png'; 
+import CarouselImage3 from './restaurantimage3.png';
 
 function RestaurantMediaCarousel() {
   return (
@@ -26,7 +27,7 @@ function RestaurantMediaCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={CarouselImage2}
+          src={CarouselImage3}
           alt="Third slide"
         />
       </Carousel.Item>
