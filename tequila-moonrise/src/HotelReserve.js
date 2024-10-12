@@ -103,12 +103,12 @@ function HotelReserve() {
   };
 
   return (
-    <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '0 auto' }}>
+    <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
       <div className="steps">
-        <div className="step active">CHECK-IN & CHECK-OUT DATE</div>
+        <div className="step active">CHECK-IN & <br/> CHECK-OUT DATE</div>
         <div className="step">SELECT ROOMS & RATES</div>
         <div className="step">GUEST INFORMATION</div>
-        <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
+        <div className="step">PAYMENT & BOOKING<br/> CONFIRMATION</div>
       </div>
       <div className="row">
         <div className="col-md-4">
