@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import './Restaurant.css';
 
 function RestoReserveForm() {
   const [validated, setValidated] = useState(false);
@@ -20,18 +21,20 @@ function RestoReserveForm() {
   return (
     <Form className="custom-form-bg" noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3">
-        <Form.Group as={Col} md="3" controlId="validationFirstName">
+        <Form.Group as={Col} md="4" controlId="validationFirstName">
           <Form.Label>First name</Form.Label>
           <Form.Control required type="text" placeholder="First name" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group as={Col} md="3" controlId="validationLastName">
+        <Form.Group as={Col} md="4" controlId="validationLastName">
           <Form.Label>Last name</Form.Label>
           <Form.Control required type="text" placeholder="Last name" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
+      </Row>
 
+      <Row className="mb-3">
         <Form.Group as={Col} md="2" controlId="validationNumberofGuests">
           <Form.Label>Number of guests</Form.Label>
           <Form.Control
@@ -48,7 +51,7 @@ function RestoReserveForm() {
       </Row>
 
       <Row className="mb-3">
-        <Form.Group as={Col} md="3" controlId="validationCustomContactNumber">
+        <Form.Group as={Col} md="4" controlId="validationCustomContactNumber">
           <Form.Label>Contact Number</Form.Label>
           <Form.Control required type="tel" placeholder="Contact number" />
           <Form.Control.Feedback type="invalid">

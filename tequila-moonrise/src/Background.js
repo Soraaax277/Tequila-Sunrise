@@ -6,7 +6,7 @@ const VideoBackground = ({ videoSrc }) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const newScale = 1 + scrollY / 1500; 
+      const newScale = 1 + scrollY / 3000; 
       setScale(newScale);
     };
 

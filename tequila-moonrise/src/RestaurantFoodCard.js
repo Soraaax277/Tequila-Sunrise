@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
-function FoodCard({ imageSrc, foodname, fooddescription}) {
+function RestaurantFoodCard({ imageSrc, foodname, fooddescription}) {
   return (
     <Card style={{ width: '30rem' }}>
       <Card.Img variant="top" src={imageSrc} alt={foodname} />
@@ -13,4 +13,4 @@ function FoodCard({ imageSrc, foodname, fooddescription}) {
   );
 }
 
-export default FoodCard;
+export default RestaurantFoodCard;

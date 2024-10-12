@@ -2,14 +2,14 @@ import React, { useState, useRef } from "react";
 import "./Restaurant.css"; // Ensure your styles are correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faArrowCircleLeft,faArrowCircleRight,} from "@fortawesome/free-solid-svg-icons";
-import frontCover from './Menu1.png';
-import page1back from './Menu2.png';
-import page2front from './Menu3.png';
-import page2back from './Menu4.png';
-import page3front from './Menu5.png';
-import page3back from './Menu6.png';
-import page4front from './Menu7.png';
-import page4back from './Menu8.png';
+import frontCover from './restaurantMenu1.png';
+import page1back from './restaurantMenu2.png';
+import page2front from './restaurantMenu3.png';
+import page2back from './restaurantMenu4.png';
+import page3front from './restaurantMenu5.png';
+import page3back from './restaurantMenu6.png';
+import page4front from './restaurantMenu7.png';
+import page4back from './restaurantMenu8.png';
 
 
 const MenuFlipBook = () => {
@@ -88,7 +88,7 @@ const MenuFlipBook = () => {
   };
 
   return (
-    <div>
+  
       <div className="menunavcontainer">
         {/* Book */}
         <div className="menuContainer">
@@ -173,7 +173,6 @@ const MenuFlipBook = () => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 
