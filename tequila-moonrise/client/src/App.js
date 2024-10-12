@@ -7,12 +7,13 @@ import HotelReserveRoom from './HotelReserveRoom';
 import GuestInformation from './GuestInformation';
 import BookingConfirmation from './BookingConfirmation';
 import Restaurant from './Restaurant';
+import Stay from './Stay';
 import FoodCard from './FoodCard';
 import MenuFlipBook from './MenuFlipBook';
 import RestoReserveForm from './Restaurant_Reserve';
 import VideoBackground from './Background';
 import './App.css';
-import './Stay.css';
+import './HotelReserve.css';
 import './HotelReserveRoom.css';
 import './BookingConfirmation.css';
 import './Restaurant.css';
@@ -99,6 +100,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<div>Welcome to our hotel!</div>} />
           <Route path="/about" element={<div>About us</div>} />
+          <Route path="/stay" element={<Stay />} />
           <Route path="/hotel" element={<HotelReserve />} />
           <Route path="/select-rooms" element={<HotelReserveRoom />} />
           <Route path="/restaurant" element={<Restaurant />} />

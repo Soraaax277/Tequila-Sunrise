@@ -9,8 +9,9 @@ import BookingConfirmation from './BookingConfirmation';
 import Restaurant from './Restaurant';
 import VideoBackground from './Background';
 import Navbar from './Navbar';
+import Stay from './Stay';
 import './App.css';
-import './Stay.css';
+import './HotelReserve.css';
 import './HotelReserveRoom.css';
 import './BookingConfirmation.css';
 import './Restaurant.css';
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<div>Welcome to our hotel!</div>} />
           <Route path="/about" element={<div>About us</div>} />
+          <Route path="/stay" element={<Stay />} />
           <Route path="/hotel" element={<HotelReserve />} />
           <Route path="/select-rooms" element={<HotelReserveRoom />} />
           <Route path="/restaurant" element={<Restaurant />} />
