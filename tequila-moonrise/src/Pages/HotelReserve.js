@@ -1,7 +1,8 @@
-import React, { useState, useEffect , Link } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import '../PagesCss/HotelReserveRooms.css';
+import '../css/HotelReserve.css';
+import { Link } from 'react-router-dom';
 
 function HotelReserve() {
   const [checkinDate, setCheckinDate] = useState('');
@@ -55,7 +56,7 @@ function HotelReserve() {
   const isDateInRange = (date) => {
     const checkin = new Date(checkinDate);
     const checkout = new Date(checkoutDate);
-    return checkin <= date && date <= checkout;
+    return (checkin <= date && date <= checkout && date.getMonth() === calendarMonth && date.getFullYear() === calendarYear) || (checkinDate && new Date(checkinDate).getDate() === date.getDate() && new Date(checkinDate).getMonth() === date.getMonth() && new Date(checkinDate).getFullYear() === date.getFullYear());
   };
 
   const renderCalendar = () => {
@@ -102,110 +103,58 @@ function HotelReserve() {
   };
 
   return (
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img
-              src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-wZGylhENnxNN00Lg6rqHNzaM.png?st=2024-09-21T07%3A51%3A01Z&se=2024-09-21T09%3A51%3A01Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-09-20T23%3A44%3A58Z&ske=2024-09-21T23%3A44%3A58Z&sks=b&skv=2024-08-04&sig=tVDwbShvvNGi8cQa1YJNebDVr1/R%2BKzigOqmb1BugCU%3D"
-              alt="Logo of a satellite with stars"
-              height="50"
-              width="50"
-            />
-            TEQUILA MOONRISE
-          </a>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  HOME
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  ABOUT
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="#">
-                  STAY
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  DINE
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  CONTACT
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  LOGIN
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
       <div className="steps">
-        <div className="step active">CHECK-IN & CHECK-OUT DATE</div>
+        <div className="step active">CHECK-IN & <br/> CHECK-OUT DATE</div>
         <div className="step">SELECT ROOMS & RATES</div>
         <div className="step">GUEST INFORMATION</div>
-        <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
+        <div className="step">PAYMENT & BOOKING<br/> CONFIRMATION</div>
       </div>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4">
-            <div className="form-group">
-              <label htmlFor="checkin">Check-in Date</label>
-              <input
-                className="form-control"
-                id="checkin"
-                type="date"
-                value={checkinDate}
-                onChange={handleCheckinChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="checkout">Check-out Date</label>
-              <input
-                className="form-control"
-                id="checkout"
-                type="date"
-                value={checkoutDate}
-                onChange={handleCheckoutChange}
-              />
-            </div>
+      <div className="row">
+        <div className="col-md-4">
+          <div className="form-group">
+            <label htmlFor="checkin">Check-in Date</label>
+            <input
+              className="form-control"
+              id="checkin"
+              type="date"
+              value={checkinDate}
+              onChange={handleCheckinChange}
+            />
           </div>
-          <div className="col-md-8">
-            <div className="calendar">
-              <div className="calendar-header">
-                
-              </div>
-              <table>
+          <div className="form-group">
+            <label htmlFor="checkout">Check-out Date</label>
+            <input
+              className="form-control"
+              id="checkout"
+              type="date"
+              value={checkoutDate}
+              onChange={handleCheckoutChange}
+            />
+          </div>
+        </div>
+ <div className="col-md-8">
+          <div className="calendar">
+            <div className="calendar-header">
+              <button className="btn btn-link" onClick={handlePrevMonth}>
+                < i className="fas fa-chevron-left "></i>
+              </button>
+              <span>{getMonthName()} {calendarYear}</span>
+              <button className="btn btn-link" onClick={handleNextMonth}>
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div className='table-container'>
+              <table style={{ borderCollapse: 'collapse' }}>
                 <thead>
                   <tr>
-                    <th colSpan="7" className="month-header">
-                      <button className="btn btn-link" onClick={handlePrevMonth}>
-                        <i className="fas fa-chevron-left"></i>
-                      </button>
-                      {getMonthName()} {calendarYear}
-                      <button className="btn btn-link" onClick={handleNextMonth}>
-                        <i className="fas fa-chevron-right"></i>
-                      </button>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th>SUN</th>
-                    <th>MON</th>
-                    <th>TUES</th>
-                    <th>WED</th>
-                    <th>THURS</th>
-                    <th>FRI</th>
-                    <th>SAT</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>SUN</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>MON</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>TUES</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>WED</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>THURS</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>FRI</th>
+                    <th style={{ width: 'calc(100% / 7)' }}>SAT</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -214,11 +163,17 @@ function HotelReserve() {
                       {week.map((date, dayIndex) => (
                         <td
                           key={dayIndex}
+                          style={{
+                            width: 'calc(100% / 7)',
+                            border: '1px solid #ccc',
+                            padding: '10px',
+                            textAlign: 'center',
+                          }}
                           className={
-                            date && (isDateInRange(date) || (checkinDate && new Date(checkinDate).getDate() === date.getDate())) ? 'highlight' : ''
+                            date && isDateInRange(date) ? 'highlight' : ''
                           }
                           onMouseEnter={(e) => {
-                            if (date && new Date(checkinDate).getDate() === date.getDate()) {
+                            if (date && isDateInRange(date)) {
                               e.target.classList.add('hover-highlight');
                             }
                           }}
@@ -234,13 +189,12 @@ function HotelReserve() {
                 </tbody>
               </table>
             </div>
+            
           </div>
         </div>
-        <button className="btn-next">
- <Link to="HotelReserveRooms">
-    NEXT
-  </Link>
-</button>
+      </div>
+      <div className="text-end mt-3">
+        <Link className="next-button" to="/select-rooms">NEXT</Link>
       </div>
     </div>
   );
