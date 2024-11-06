@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Stay.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +10,47 @@ import Image1 from '../components/img/restaurantfood1.png';
 import Image2 from '../components/img/restaurantfood2.png';
 import Image3 from '../components/img/restaurantfood3.png';
 import Image4 from '../components/img/restaurantfood4.png';
+import HotelReserve from './Pages/HotelReserve';
+import GuestInformation from './Pages/GuestInformation';
+import HotelReserveRoom from './Pages/HotelReserveRoom';
 
 export default function Stay() {
+    const [checkinDate, setCheckinDate] = useState('');
+    const [checkoutDate, setCheckoutDate] = useState('');
+    const [guestData, setGuestData] = useState({});
+    const [roomData, setRoomData] = useState({});
+
+    const handleBookingSubmit = async () => {
+        const bookingData = {
+            checkinDate,
+            checkoutDate,
+            ...guestData,
+            ...roomData,
+        };
+
+        try {
+            const response = await fetch('http://localhost:3001/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bookingData),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Booking successful:', result);
+                alert('Booking successful!');
+            } else {
+                const error = await response.json();
+                alert('Booking failed: ' + error.message);
+            }
+        } catch (error) {
+            console.error('Error booking:', error);
+            alert('Error booking: ' + error.message);
+        }
+    };
+
     return (
         <div className='container-fluid px-lg-5'>
             <img 
@@ -39,6 +78,9 @@ export default function Stay() {
                     />
                 </div>
             </div>
+            <HotelReserve setCheckinDate={setCheckinDate} setCheckoutDate={setCheckoutDate} />
+            <HotelReserveRoom setRoomData={setRoomData} />
+            <GuestInformation setGuestData={setGuestData} onSubmit={handleBookingSubmit} />
         </div>
     );
 }

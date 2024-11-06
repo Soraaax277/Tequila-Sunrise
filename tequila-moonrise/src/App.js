@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import HotelReserve from './Pages/HotelReserve';
@@ -29,7 +29,7 @@ function App() {
         <VideoBackground videoSrc={bgVideo} />
 
         <Routes>
-          <Route path="/" exact element={<div>Welcome to our hotel!</div>} />
+          <Route path="/" element={<div>Welcome to our hotel!</div>} />
           <Route path="/about" element={<div>About us</div>} />
           <Route path="/stay" element={<Stay />} />
           <Route path="/hotel" element={<HotelReserve />} />
@@ -39,7 +39,7 @@ function App() {
           <Route path="/guest-information" element={<GuestInformation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/booking-confirmation" element={< BookingConfirmation />} />
+          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
         </Routes>
       </div>
     </BrowserRouter>

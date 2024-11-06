@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { nationalities, timeOfArrival } from '../components/js_functions/Nationalities';
 
-function GuestInformation() {
+function GuestInformation({ setGuestData }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -62,8 +62,7 @@ function GuestInformation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Form is valid, proceed with submission
-      console.log('Form submitted:', formData);
+      setGuestData(formData); // Pass guest data back to parent
       navigate('/booking-confirmation');
     }
   };
@@ -165,7 +164,6 @@ function GuestInformation() {
                     <option key={index} value={nationality}>{nationality}</option>
                   ))
                 }
-                
               </select>
               {errors.nationality && <div className="error">{errors.nationality}</div>}
             </div>
@@ -184,7 +182,6 @@ function GuestInformation() {
                     <option key={index} value={time}>{time}</option>
                   ))
                 }
-                
               </select>
             </div>
             <div className="col-md-6">
