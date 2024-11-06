@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, useLocation, NavLink } from 'react-router-dom';
+import { useNavigate, useLocation, NavLink } from 'react-router-dom';
+import { usePageTransition } from './BookingPageTransition';
 import Logo from '../img/logo.png';
 import '../../css/App.css';
 import '../../css/HotelReserve.css';
@@ -13,6 +14,15 @@ import 'font-awesome/css/font-awesome.min.css';
 
 export default function Navbar() {
     const currentWindow = useLocation();
+    const navigate = useNavigate();
+
+    // Set up the page transition with navigation to /hotel
+    const { isTransitioning, triggerTransition, fadeClass } = usePageTransition();
+    const handleNavLinkClick = (e, path) => {
+        e.preventDefault();  // Prevent default navigation
+        triggerTransition(() => navigate(path));  // Trigger transition, then navigate
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark flex-column">
           <div className="container-fluid w-100">
@@ -29,8 +39,9 @@ export default function Navbar() {
             {currentWindow.pathname !== '/hotel' && (
                     <NavLink 
                     to="/hotel" 
+                    onClick={(e) => handleNavLinkClick(e, '/hotel')}  // Use the transition
                     className="btn btn-outline-light" 
-                    activeClassName="active"
+                    //activeClassName="active"
                   >
                     BOOK NOW
                   </NavLink>)}
@@ -96,6 +107,9 @@ export default function Navbar() {
             </ul>
           </div>
           </div>
+
+          {isTransitioning && <div className={`transition-overlay ${fadeClass}`}>Transitioning...</div>}
+
         </nav>
     )
 }

@@ -1,0 +1,24 @@
+/* Initial state */
+.transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+  transition: opacity 1s ease-in-out, background-color 1s ease-in-out;
+  z-index: 999;
+  opacity: 0;
+}
+
+/* Fade-in effect */
+.transition-overlay.fade-in {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 1); /* Transition to black */
+}
+
+/* Fade-out effect */
+.transition-overlay.fade-out {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0); /* Fade back to transparent */
+}
