@@ -1,6 +1,6 @@
 async function bookHotel(data) {
     try {
-        const response = await fetch('http://localhost:3000/api/book', {
+        const response = await fetch('http://localhost:3000/api/book', { // Change port if needed
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -8,20 +8,22 @@ async function bookHotel(data) {
             body: JSON.stringify(data),
         });
 
-        const result = await response.json();
-        if (response.ok) {
-            console.log('Booking successful:', result);
-            alert('Booking successful!');
-        } else {
-            console.error('Booking failed:', result.message);
-            alert('Booking failed: ' + result.message);
+        // Check if the response is OK
+        if (!response.ok) {
+            const errorResult = await response.json();
+            console.error('Booking failed:', errorResult.message);
+            alert('Booking failed: ' + errorResult.message);
+            return; // Exit the function if the response is not OK
         }
+
+        const result = await response.json();
+        console.log('Booking successful:', result);
+        alert('Booking successful!');
     } catch (error) {
         console.error('Error booking:', error);
         alert('Error booking: ' + error.message);
     }
 }
-
 
 document.getElementById('bookingForm').addEventListener('submit', function(event) {
     event.preventDefault(); 
@@ -36,6 +38,11 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
         specialRequests: document.getElementById('specialRequests').value
     };
 
-    
+    // Optional: Validate bookingData before sending
+    if (!bookingData.name || !bookingData.email) {
+        alert('Please fill in all required fields.');
+        return; // Exit if validation fails
+    }
+
     bookHotel(bookingData);
 });

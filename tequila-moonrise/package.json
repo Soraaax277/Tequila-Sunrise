@@ -11,6 +11,7 @@
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "epress": "^0.0.1-security",
     "express": "^4.21.1",
     "font-awesome": "^4.7.0",
     "ls": "^0.2.1",
