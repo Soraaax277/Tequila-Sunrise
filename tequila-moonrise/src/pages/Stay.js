@@ -10,9 +10,9 @@ import Image1 from '../components/img/restaurantfood1.png';
 import Image2 from '../components/img/restaurantfood2.png';
 import Image3 from '../components/img/restaurantfood3.png';
 import Image4 from '../components/img/restaurantfood4.png';
-import HotelReserve from './HotelReserve';
-import GuestInformation from './GuestInformation';
-import HotelReserveRoom from './HotelReserveRoom';
+import HotelReserve from './Pages/HotelReserve';
+import GuestInformation from './Pages/GuestInformation';
+import HotelReserveRoom from './Pages/HotelReserveRoom';
 
 export default function Stay() {
     const [checkinDate, setCheckinDate] = useState('');
