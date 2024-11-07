@@ -79,7 +79,6 @@ const HotelReserveRoom = ({ setRoomData }) => {
           <div className="mb-3 ">
             <label className="form-label" htmlFor="request">Special Requests (will be added to the bill):</label>
             <textarea className="form-control" id="request" value={request} onChange={(e) => setRequest(e.target.value)} />
-          ```javascript
           </div>
           <div className="mb-3">
             <label className="form-label" htmlFor="totalFee">Total Fee ({totalFee > 0 ? `${totalFee} Lunaria` : '0 Lunaria'})</label>

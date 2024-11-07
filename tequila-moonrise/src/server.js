@@ -1,70 +1,115 @@
+// server.js
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('mongoose'); 
+
 const app = express();
-const port = 3001;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
-// MongoDB Connection URI
-const mongoURI = 'mongodb://localhost:27017/tequilaSunrise';
-
-// Connect to MongoDB
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+// MongoDB Connection
+mongoose.connect('mongodb://localhost:27017/bookings', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-.then(() => {
-    console.log('Connected to MongoDB');
-})
-.catch(err => {
-    console.error('MongoDB connection error:', err);
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+// Define Schemas and Models
+
+// Guest Information Schema
+const guestInfoSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  gender: String,
+  birthdate: Date,
+  email: String,
+  nationality: String,
+  arrivalTime: String,
+  contactNumber: String,
+  address: String,
 });
 
-// Define a Mongoose Schema for bookings
-const bookingSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    hotelName: String,
-    checkInDate: Date,
-    checkOutDate: Date,
-    numberOfGuests: Number,
-    specialRequests: String
+const GuestInformation = mongoose.model('GuestInformation', guestInfoSchema);
+
+// Hotel Reserve Schema
+const hotelReserveSchema = new mongoose.Schema({
+  hotelName: String,
+  checkInDate: Date,
+  checkOutDate: Date,
+  guestInfo: { type: mongoose.Schema.Types.ObjectId, ref: 'GuestInformation' },
 });
 
-// Create a Mongoose Model
-const Booking = mongoose.model('Booking', bookingSchema);
+const HotelReserve = mongoose.model('HotelReserve', hotelReserveSchema);
 
-// Route to get all bookings
-app.get('/bookings', async (req, res) => {
-    try {
-        const bookings = await Booking.find();
-        res.json(bookings);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+// Hotel Reserve Room Schema
+const hotelReserveRoomSchema = new mongoose.Schema({
+  hotelReserve: { type: mongoose.Schema.Types.ObjectId, ref: 'HotelReserve' },
+  roomType: String,
+  numberOfRooms: Number,
+  pricePerNight: Number,
 });
 
-// Route to create a new booking
-app.post('/bookings', async (req, res) => {
-    const booking = new Booking(req.body);
+const HotelReserveRoom = mongoose.model('HotelReserveRoom', hotelReserveRoomSchema);
 
-    try {
-        const newBooking = await booking.save();
-        res.status(201).json(newBooking);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+// Stay Schema
+const staySchema = new mongoose.Schema({
+  hotelReserve: { type: mongoose.Schema.Types.ObjectId, ref: 'HotelReserve' },
+  totalNights: Number,
+  totalPrice: Number,
 });
 
-// Root route
-app.get('/', (req, res) => {
-    res.send('Tequila Sunrise API');
+const Stay = mongoose.model('Stay', staySchema);
+
+// POST endpoint to create guest information
+app.post('/api/guest', async (req, res) => {
+  try {
+    const newGuestInfo = new GuestInformation(req.body);
+    await newGuestInfo.save();
+    res.status(201).json({ message: 'Guest information created successfully', guestInfo: newGuestInfo });
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating guest information', error });
+  }
+});
+
+// POST endpoint to create hotel reservation
+app.post('/api/hotelreserve', async (req, res) => {
+  try {
+    const newHotelReserve = new HotelReserve(req.body);
+    await newHotelReserve.save();
+    res.status(201).json({ message: 'Hotel reservation created successfully', hotelReserve: newHotelReserve });
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating hotel reservation', error });
+  }
+});
+
+// POST endpoint to create hotel reservation room
+app.post('/api/hotelreserveroom', async (req, res) => {
+  try {
+    const newHotelReserveRoom = new HotelReserveRoom(req.body);
+    await newHotelReserveRoom.save();
+    res.status(201).json({ message: 'Hotel reservation room created successfully', hotelReserveRoom: newHotelReserveRoom });
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating hotel reservation room', error });
+  }
+});
+
+// POST endpoint to create stay
+app.post('/api/stay', async (req, res) => {
+  try {
+    const newStay = new Stay(req.body);
+    await newStay.save();
+    res.status(201).json({ message: 'Stay created successfully', stay: newStay });
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating stay', error });
+  }
 });
 
 // Start the server
-app.listen(3001, () => {
-    console.log(`Server is running on http://localhost:3001`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

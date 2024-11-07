@@ -38,9 +38,6 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {  // Added props for
     setCheckoutDate(date); // Pass the check-out date to the parent
   };
 
-  // Remaining code unchanged...
-  // ...
-  
   return (
     <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
       <div className="steps">
@@ -73,7 +70,7 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {  // Added props for
           </div>
         </div>
         <div className="col-md-8">
-          {/* Calendar rendering code... */}
+          {/* Calendar rendering code can go here */}
         </div>
       </div>
       <div className="text-end mt-3">
