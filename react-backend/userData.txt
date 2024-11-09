@@ -1,0 +1,40 @@
+{
+  "firstName": "Jacob Nathaniel ",
+  "lastName": "Lopez",
+  "contactNo": "0927148442",
+  "email": "jacob.lopez@ciit.edu.ph",
+  "confirmEmail": "jacob.lopez@ciit.edu.ph",
+  "password": "asdf",
+  "confirmPassword": "asdf",
+  "formType": "Register"
+}
+{
+  "firstName": "Mica",
+  "lastName": "Santiago",
+  "contactNo": "123456789",
+  "email": "mica@email.com",
+  "confirmEmail": "mica@email.com",
+  "password": "qwerty",
+  "confirmPassword": "qwerty",
+  "formType": "Register"
+}
+{
+  "firstName": "Marc-Ace",
+  "lastName": "Edu",
+  "contactNo": "25801457",
+  "email": "sora@email.com",
+  "confirmEmail": "sora@email.com",
+  "password": "zxcvb",
+  "confirmPassword": "zxcvb",
+  "formType": "Register"
+}
+{
+  "email": "jacob.lopez@ciit.edu.ph",
+  "password": "asdf",
+  "formType": "Login"
+}
+{
+  "email": "qwerty@gmail.com",
+  "password": "hihello",
+  "formType": "Login"
+}

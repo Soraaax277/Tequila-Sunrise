@@ -40,13 +40,30 @@ const Register = () => {
     return Object.keys(formErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
-      console.log("Form data submitted:", formData);
+      const dataToSend = { ...formData, formType: 'Register' };
+  
+      try {
+        const response = await fetch('http://localhost:5000/saveData', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formData: dataToSend })
+        });
+        
+        if (response.ok) {
+          console.log("Data saved successfully");
+        } else {
+          console.log("Failed to save data");
+        }
+      } catch (error) {
+        console.error("Error saving data:", error);
+      }
     }
   };
+  
 
   return (
     <div className="register-container">

@@ -27,13 +27,31 @@ const Login = () => {
     return Object.keys(formErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
-      console.log("Login data submitted:", formData);
+      const dataToSend = { ...formData, formType: 'Login' };
+  
+      try {
+        const response = await fetch('http://localhost:5000/saveData', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formData: dataToSend })
+        });
+        
+        if (response.ok) {
+          console.log("Data saved successfully");
+        } else {
+          console.log("Failed to save data");
+        }
+      } catch (error) {
+        console.error("Error saving data:", error);
+      }
     }
   };
+  
+  
 
   return (
     <div className="login-container">
@@ -58,7 +76,6 @@ const Login = () => {
             onChange={handleChange}
           />
           {errors.password && <p className="error">{errors.password}</p>}
-          <a href="#" className="register-link">Forgot password?</a>
         </div>
         <button type="submit">Login</button>
       </form>
