@@ -1,31 +1,58 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const port = 5000;
 
-app.use(cors());
+const mongoURI = 'mongodb://127.0.0.1:27017/userDataDB';
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB locally'))
+.catch((err) => console.error('Failed to connect to MongoDB', err));
+
+const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  contactNo: String,
+  email: String,
+  confirmEmail: String,
+  password: String,
+  confirmPassword: String
+});
+
+const User = mongoose.model('User', userSchema);
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.post('/saveData', (req, res) => {
-  console.log('Received request:', req.body); 
-  
   const { formData } = req.body;
 
-  const formattedData = JSON.stringify(formData, null, 2) + '\n';
-
-  fs.appendFile('userData.txt', formattedData, (err) => {
-    if (err) {
-      console.error("Error writing to file:", err);
-      return res.status(500).send('Error saving data');
-    }
-    console.log("Data saved successfully!");
-    res.send('Data saved successfully');
+  const newUser = new User({
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    contactNo: formData.contactNo,
+    email: formData.email,
+    confirmEmail: formData.confirmEmail,
+    password: formData.password,
+    confirmPassword: formData.confirmPassword
   });
+
+  newUser.save()
+    .then(() => {
+      console.log('User data saved to MongoDB');
+      res.send('Data saved successfully');
+    })
+    .catch((err) => {
+      console.error('Error saving to MongoDB', err);
+      res.status(500).send('Error saving data');
+    });
 });
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
