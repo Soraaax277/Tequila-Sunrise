@@ -1,0 +1,7 @@
+.nav-link:hover, .btn-outline-light:hover {
+    color: #715cf8;
+  }
+
+  .active {
+    color: #715cf8 !important;
+  }

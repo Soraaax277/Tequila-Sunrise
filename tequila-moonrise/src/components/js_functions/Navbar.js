@@ -8,6 +8,7 @@ import '../../css/HotelReserveRoom.css';
 import '../../css/BookingConfirmation.css';
 import '../../css/Restaurant.css';
 import '../../css/Background.css';
+import '../../css/Nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -41,7 +42,7 @@ export default function Navbar() {
                     to="/hotel" 
                     onClick={(e) => handleNavLinkClick(e, '/hotel')}  // Use the transition
                     className="btn btn-outline-light" 
-                    //activeClassName="active"
+                    activeClassName="active"
                   >
                     BOOK NOW
                   </NavLink>)}
