@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
-import App from './App';
+import App from './App'; // Adjust the path if necessary
+import { BookingProvider } from './Pages/BookingContext'; // Adjust the path as necessary
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
 );

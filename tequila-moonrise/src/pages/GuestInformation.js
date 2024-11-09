@@ -60,17 +60,31 @@ function GuestInformation({ setGuestData }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted"); // Debugging line
-
     if (validateForm()) {
-      console.log("Form is valid, proceeding with submission."); // Debugging line
       setGuestData(formData); // Pass guest data back to parent
 
-      // Here, you can choose to submit the data to your backend if needed
-      // For now, we'll just navigate to the confirmation page
-      navigate('/booking-confirmation'); // Navigate to Booking Confirmation after successful submission
-    } else {
-      console.log("Form validation failed:", errors); // Debugging line
+      // Send guest data to the backend
+      try {
+        const response = await fetch('http://localhost:5000/api/guest', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Guest information submitted:', result);
+          navigate('/booking-confirmation'); // Navigate to Booking Confirmation after successful submission
+        } else {
+          const error = await response.json();
+          alert('Failed to submit guest information: ' + error.message);
+        }
+      } catch (error) {
+        console.error('Error submitting guest information:', error);
+        alert('Error submitting guest information: ' + error.message);
+      }
     }
   };
 
@@ -90,7 +104,7 @@ function GuestInformation({ setGuestData }) {
               {errors.firstName && <div className="error">{errors.firstName}</div>}
             </div>
             <div className="col-md-6">
-              <input type="text" className=" form-control" placeholder="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} />
+              <input type="text" className="form-control" placeholder="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} />
               {errors.lastName && <div className="error">{errors.lastName}</div>}
             </div>
           </div>

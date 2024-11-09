@@ -2,29 +2,12 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '../css/HotelReserve.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function HotelReserve({ setCheckinDate, setCheckoutDate }) {  // Added props for parent component
+function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   const [checkinDate, setCheckinDateState] = useState('');
   const [checkoutDate, setCheckoutDateState] = useState('');
-  const [calendarMonth, setCalendarMonth] = useState(new Date().getMonth());
-  const [calendarYear, setCalendarYear] = useState(new Date().getFullYear());
-
-  useEffect(() => {
-    if (checkinDate) {
-      const checkin = new Date(checkinDate);
-      setCalendarMonth(checkin.getMonth());
-      setCalendarYear(checkin.getFullYear());
-    }
-  }, [checkinDate]);
-
-  useEffect(() => {
-    if (checkoutDate) {
-      const checkout = new Date(checkoutDate);
-      setCalendarMonth(checkout.getMonth());
-      setCalendarYear(checkout.getFullYear());
-    }
-  }, [checkoutDate]);
+  const navigate = useNavigate();
 
   const handleCheckinChange = (e) => {
     const date = e.target.value;
@@ -36,6 +19,35 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {  // Added props for
     const date = e.target.value;
     setCheckoutDateState(date);
     setCheckoutDate(date); // Pass the check-out date to the parent
+  };
+
+  const handleNext = async () => {
+    // Send check-in and check-out dates to the backend
+    const hotelReserveData = {
+      checkInDate: checkinDate,
+      checkOutDate: checkoutDate,
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/hotelreserve', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(hotelReserveData),
+      });
+
+      if (response.ok) {
+        console.log('Hotel reservation data saved successfully');
+        navigate('/select-rooms'); // Navigate to the next step
+      } else {
+        const error = await response.json();
+        alert('Failed to save hotel reservation data: ' + error.message);
+      }
+    } catch (error) {
+      console.error('Error saving hotel reservation data:', error);
+      alert('Error saving hotel reservation data: ' + error.message);
+    }
   };
 
   return (
@@ -69,12 +81,9 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {  // Added props for
             />
           </div>
         </div>
-        <div className="col-md-8">
-          {/* Calendar rendering code can go here */}
-        </div>
       </div>
       <div className="text-end mt-3">
-        <Link className="next-button" to="/select-rooms">NEXT</Link>
+        <button className="next-button" onClick={handleNext}>NEXT</button>
       </div>
     </div>
   );

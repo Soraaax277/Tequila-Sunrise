@@ -20,6 +20,7 @@ import './css/Background.css';
 import './css/BookingPageTransition.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+import { BookingProvider } from './Pages/BookingContext'; // Ensure this path is correct
 
 function App() {
   const [checkinDate, setCheckinDate] = useState('');
@@ -28,37 +29,39 @@ function App() {
   const [guestData, setGuestData] = useState(null);
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-        <VideoBackground videoSrc={bgVideo} />
-        <Routes>
-          <Route path="/" element={<div>Welcome to our hotel!</div>} />
-          <Route path="/about" element={<div>About us</div>} />
-          <Route path="/stay" element={<Stay />} />
-          <Route 
-            path="/hotel" 
-            element={<HotelReserve setCheckinDate={setCheckinDate} setCheckoutDate={setCheckoutDate} />} 
-          />
-          <Route 
-            path="/select-rooms" 
-            element={<HotelReserveRoom checkinDate={checkinDate} checkoutDate={checkoutDate} setRoomData={setRoomData} />} 
-          />
-          <Route 
-            path="/guest-information" 
-            element={<GuestInformation setGuestData={setGuestData} />} 
-          />
-          <Route path="/restaurant" element={<Restaurant />} />
-          <Route path="/contact" element={<div>Contact us</div>} />
-          <Route 
-            path="/booking-confirmation" 
-            element={<BookingConfirmation roomData={roomData} guestData={guestData} />} 
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <BookingProvider> {/* Wrap your application with BookingProvider */}
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <VideoBackground videoSrc={bgVideo} />
+          <Routes>
+            <Route path="/" element={<div>Welcome to our hotel!</div>} />
+            <Route path="/about" element={<div>About us</div>} />
+            <Route path="/stay" element={<Stay />} />
+            <Route 
+              path="/hotelreserve" 
+              element={<HotelReserve setCheckinDate={setCheckinDate} setCheckoutDate={setCheckoutDate} />} 
+            />
+            <Route 
+              path="/select-rooms" 
+              element={<HotelReserveRoom checkinDate={checkinDate} checkoutDate={checkoutDate} setRoomData={setRoomData} />} 
+            />
+            <Route 
+              path="/guest-information" 
+              element={<GuestInformation setGuestData={setGuestData} />} 
+            />
+            <Route path="/restaurant" element={<Restaurant />} />
+            <Route path="/contact" element={<div>Contact us</div>} />
+            <Route 
+              path="/booking-confirmation" 
+              element={<BookingConfirmation roomData={roomData} guestData={guestData} />} 
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </BookingProvider>
   );
 }
 
