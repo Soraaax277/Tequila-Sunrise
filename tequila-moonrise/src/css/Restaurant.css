@@ -257,5 +257,9 @@ color: #ccc;
 width: 10%;
 }
 
+.btn-sm.btn.btn-primary{
+  width: 200px;
+}
+
 
 

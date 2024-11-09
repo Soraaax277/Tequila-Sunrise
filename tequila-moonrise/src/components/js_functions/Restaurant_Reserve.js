@@ -8,7 +8,27 @@ import '../../css/Restaurant.css';
 function RestoReserveForm() {
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event) => {
+  // Added for backend
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    guestNumber: '',
+    contactNumber: '',
+    email: '',
+    dateReserved: '',
+    timeReserved: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission and send data to the backend
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -16,6 +36,38 @@ function RestoReserveForm() {
     }
 
     setValidated(true);
+
+    try {
+      //for checking if data is being sent
+      console.log(formData);
+      // Send form data to the backend
+      const response = await fetch('http://localhost:5000/api/submit-reservation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert('Reservation submitted successfully!');
+        // Optionally reset the form after submission
+        setFormData({
+          firstName: '',
+          lastName: '',
+          guestNumber: '',
+          contactNumber: '',
+          email: '',
+          dateReserved: '',
+          timeReserved: ''
+        });
+      } else {
+        alert('Failed to submit reservation');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error submitting your reservation.');
+    }
   };
 
   return (
@@ -23,25 +75,42 @@ function RestoReserveForm() {
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationFirstName">
           <Form.Label>First name</Form.Label>
-          <Form.Control required type="text" placeholder="First name" />
+          <Form.Control 
+            required 
+            type="text"  
+            placeholder="First name" 
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group as={Col} md="4" controlId="validationLastName">
           <Form.Label>Last name</Form.Label>
-          <Form.Control required type="text" placeholder="Last name" />
+          <Form.Control 
+            required 
+            type="text"  
+            placeholder="Last name" 
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
       </Row>
 
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Form.Group as={Col} md="2" controlId="validationNumberofGuests">
           <Form.Label>Number of guests</Form.Label>
           <Form.Control
             required
-            type="number"
-            placeholder="Number of guests"
+            type="number"  
+            placeholder="#"
             min="1"
+            name="guestNumber"
+            value={formData.guestNumber}
+            onChange={handleChange}
           />
           <Form.Control.Feedback type="invalid">
             Please input the number of guests, minimum of 1
@@ -53,7 +122,14 @@ function RestoReserveForm() {
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustomContactNumber">
           <Form.Label>Contact Number</Form.Label>
-          <Form.Control required type="tel" placeholder="Contact number" />
+          <Form.Control 
+            required 
+            type="text" 
+            placeholder="Contact number" 
+            name="contactNumber"
+            value={formData.contactNumber}
+            onChange={handleChange}
+          />
           <Form.Control.Feedback type="invalid">
             Please enter a valid contact number (10 digits).
           </Form.Control.Feedback>
@@ -64,8 +140,11 @@ function RestoReserveForm() {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             required
-            type="email" // Use 'email' for email validation
+            type="email"  
             placeholder="Enter email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
           />
           <Form.Control.Feedback type="invalid">
             Please enter a valid email address.
@@ -79,8 +158,11 @@ function RestoReserveForm() {
           <Form.Label>Date</Form.Label>
           <Form.Control
             required
-            type="date" // Use 'date' for date input
+            type="date"  
             placeholder="Select a date"
+            name="dateReserved"
+            value={formData.dateReserved}
+            onChange={handleChange}
           />
           <Form.Control.Feedback type="invalid">
             Please select a valid date.
@@ -92,8 +174,10 @@ function RestoReserveForm() {
           <Form.Label>Time</Form.Label>
           <Form.Control
             required
-            type="time" // Use 'time' for time input
-            placeholder="Select a time"
+            type="time"  
+            name="timeReserved"
+            value={formData.timeReserved}
+            onChange={handleChange}
           />
           <Form.Control.Feedback type="invalid">
             Please select a valid time.
@@ -102,10 +186,9 @@ function RestoReserveForm() {
         </Form.Group>
       </Row>
 
-      <Button className="btn-sm" type="submit">Submit form</Button>
+      <Button className="btn-sm" type="submit">Submit reservation form</Button>
     </Form>
   );
 }
 
 export default RestoReserveForm;
-

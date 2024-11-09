@@ -157,3 +157,22 @@ app.post('/api/stay', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+//Restaurant Reserve
+//server
+const restaurantReservationRoutes = require('./routes/RestaurantReserveRoutes.js'); 
+app.use('/api', restaurantReservationRoutes); 
+mongoose.connect('mongodb://localhost:27017/restaurantReservations', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err) => {
+    console.error('Failed to connect to MongoDB', err);
+  });
+app.get('/', (req, res) => {
+  res.send('Restaurant Reservation API is running');
+});
+
