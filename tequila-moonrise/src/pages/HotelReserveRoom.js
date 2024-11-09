@@ -13,8 +13,8 @@ import Room4 from '../components/img/room4.jpg';
 const rooms = [
   { id: 1, name: 'Standard', price: 100, image: Room1, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning'] },
   { id: 2, name: 'Deluxe', price: 150, image: Room2, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar'] },
-  { id: 3, name: 'Ocean View', price: 200, image: Room3, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view'] },
-  { id: 4, name: 'Private Pool', price: 250, image: Room4, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
+  { id: 3, name: 'Suite', price: 200, image: Room3, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view'] },
+  { id: 4, name: 'Villa', price: 250, image: Room4, inclusions: ['Free Wi-Fi', 'Breakfast included', 'Air conditioning', 'Mini bar', 'Ocean view', 'Private pool'] },
 ];
 
 const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
