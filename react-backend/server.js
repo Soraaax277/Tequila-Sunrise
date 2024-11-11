@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
-// Use a single MongoDB URI
 const mongoURI = 'mongodb://127.0.0.1:27017/bookings';
 
 mongoose.connect(mongoURI, {
@@ -15,7 +14,7 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('Failed to connect to MongoDB', err));
 
-// User Schema
+// User Schema for registration data
 const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -26,7 +25,17 @@ const userSchema = new mongoose.Schema({
   confirmPassword: String
 });
 
-const User = mongoose.model('User ', userSchema);
+const User = mongoose.model('registeredUser', userSchema);
+
+// Login Schema for login attempt data
+const loginSchema = new mongoose.Schema({
+  email: String,
+  password: String,
+  loginTimestamp: { type: Date, default: Date.now }
+});
+
+const Login = mongoose.model('userLogin', loginSchema);
+
 
 // Guest Information Schema
 const guestInfoSchema = new mongoose.Schema({
@@ -81,10 +90,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // User Registration Endpoint
-app.post('/saveData', (req, res) => {
+app.post('/register', (req, res) => {
   const { formData } = req.body;
 
-  const newUser  = new User({
+  const newUser = new User({
     firstName: formData.firstName,
     lastName: formData.lastName,
     contactNo: formData.contactNo,
@@ -94,16 +103,47 @@ app.post('/saveData', (req, res) => {
     confirmPassword: formData.confirmPassword
   });
 
-  newUser .save()
+  newUser.save()
     .then(() => {
-      console.log('User  data saved to MongoDB');
-      res.send('Data saved successfully');
+      console.log('User data saved to MongoDB');
+      res.send('User registered successfully');
     })
     .catch((err) => {
       console.error('Error saving to MongoDB', err);
-      res.status(500).send('Error saving data');
+      res.status(500).send('Error saving registration data');
     });
 });
+
+// User Login Endpoint with User Existence Check
+app.post('/login', async (req, res) => {
+  const { formData } = req.body;
+  
+  try {
+    const user = await User.findOne({ email: formData.email });
+
+    if (!user) {
+      return res.status(400).send('User does not exist');
+    }
+
+    if (user.password !== formData.password) {
+      return res.status(400).send('Incorrect password');
+    }
+
+    const newLogin = new Login({
+      email: formData.email,
+      password: formData.password
+    });
+
+    await newLogin.save();
+    console.log('Login data saved to MongoDB');
+    res.send('Login successful');
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).send('Error during login');
+  }
+});
+
+
 
 // POST endpoint to create guest information
 app.post('/api/guest', async (req, res) => {
