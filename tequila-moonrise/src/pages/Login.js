@@ -34,19 +34,17 @@ const Login = () => {
       const dataToSend = { ...formData, formType: 'Login' };
 
       try {
-        const response = await fetch('http://localhost:5000/login', { // Endpoint for login
+        const response = await fetch('http://localhost:5000/login', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ formData: dataToSend })
         });
 
         if (response.ok) {
-          // Successful login
           alert("Login successful!");
-          // You can redirect the user to a different page here (e.g., dashboard)
         } else {
-          const errorMessage = await response.text(); // Get the error message from the response
-          alert(errorMessage); // Show the error message in a pop-up
+          const errorMessage = await response.text();
+          alert(errorMessage); 
         }
       } catch (error) {
         console.error("Error logging in:", error);
