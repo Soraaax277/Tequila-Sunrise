@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { usePageTransition } from './BookingPageTransition';
 import Logo from '../img/logo.png';
+import RocketVid from '../vid/Rocket.mp4';
 import '../../css/App.css';
 import '../../css/HotelReserve.css';
 import '../../css/HotelReserveRoom.css';
@@ -18,7 +19,8 @@ export default function Navbar() {
     const navigate = useNavigate();
 
     // Set up the page transition with navigation to /hotel
-    const { isTransitioning, triggerTransition, fadeClass } = usePageTransition();
+    const { isTransitioning, triggerTransition, slideClass, videoClass } = usePageTransition();
+    
     const handleNavLinkClick = (e, path) => {
         e.preventDefault();  // Prevent default navigation
         triggerTransition(() => navigate(path));  // Trigger transition, then navigate
@@ -109,7 +111,22 @@ export default function Navbar() {
           </div>
           </div>
 
-          {isTransitioning && <div className={`transition-overlay ${fadeClass}`}>Transitioning...</div>}
+          {/* Video Transition Overlay */}
+          {isTransitioning && (
+  <div className="transition-wrapper">
+    <div className={`transition-overlay ${slideClass}`}></div>
+    <video
+      id="transition-video"
+      className={`transition-video ${videoClass}`}
+      muted
+      loop={false}
+      autoPlay
+    >
+      <source src={RocketVid} type="video/mp4" />
+    </video>
+  </div>
+)}
+
 
         </nav>
     )

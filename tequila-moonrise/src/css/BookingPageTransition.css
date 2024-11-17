@@ -1,24 +1,51 @@
-/* Initial state */
-.transition-overlay {
+.transition-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Initially transparent */
-  transition: opacity 1s ease-in-out, background-color 1s ease-in-out;
-  z-index: 999;
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0); /* Transparent background initially */
+  z-index: 9999; /* Ensure it's on top of other elements */
 }
 
-/* Fade-in effect */
-.transition-overlay.fade-in {
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 1); /* Transition to black */
+.transition-video {
+  position: absolute;
+  top: 100%; /* Start off-screen */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 2s ease-in-out, opacity 1s ease; /* Smooth entry/exit */
+  transform: translateY(0); /* Default position */
 }
 
-/* Fade-out effect */
-.transition-overlay.fade-out {
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0); /* Fade back to transparent */
+.slide-up-video {
+  transform: translateY(-100%); /* Slide the video to be fully visible */
+  opacity: 1; /* Fully visible during the transition */
+}
+
+.slide-up-exit-video {
+  transform: translateY(-200%); /* Slide the video off-screen to exit */
+  opacity: 0.8; /* Slightly fade out during exit */
+}
+
+.transition-overlay {
+  position: absolute;
+  top: 100%; /* Start off-screen */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 1); /* Black overlay */
+  transition: transform 2s ease-in-out, opacity 1s ease; /* Smooth entry/exit */
+  transform: translateY(0); /* Default position */
+}
+
+.slide-up {
+  transform: translateY(-100%); /* Slide the overlay to be fully visible */
+  opacity: 1; /* Ensure it's visible */
+}
+
+.slide-up-exit {
+  transform: translateY(-200%); /* Slide the overlay off-screen to exit */
+  opacity: 0.8; /* Slightly fade out during exit */
 }
