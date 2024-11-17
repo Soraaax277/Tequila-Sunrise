@@ -7,24 +7,28 @@ body {
 
 nav {
     background-color: #333;
-    padding: 1rem;
+    padding: 0.5rem; /* Reduced padding for a smaller navbar */
 }
 
 .navbar {
-    border-bottom: 1px solid white;
+    padding: 0.5rem; /* Reduced padding for a smaller navbar */
 }
 
 .navbar-brand img {
-    height: 50px;
+    height: 40px; /* Reduced height of the logo */
+    width: 40px; /* Reduced width of the logo */
 }
 
 .navbar-nav .nav-link {
-    color: white;
-    margin-right: 20px;
+    font-size: 14px; /* Adjusted font size for smaller text */
+    margin-right: 15px; /* Reduced margin between nav links */
 }
 
-.navbar-nav .nav-link.active {
-    font-weight: bold;
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px 10px; /* Smaller padding for mobile */
+        font-size: 12px; /* Smaller font size for mobile */
+    }
 }
 
 .steps {
