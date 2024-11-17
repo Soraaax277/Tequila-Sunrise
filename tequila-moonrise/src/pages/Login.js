@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import '../css/Login.css';
 
 const Login = () => {
@@ -9,6 +9,7 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // Use the navigate hook for redirection
 
   const handleChange = (e) => {
     setFormData({
@@ -34,7 +35,7 @@ const Login = () => {
       const dataToSend = { ...formData, formType: 'Login' };
 
       try {
-        const response = await fetch('http://localhost:5000/login', { 
+        const response = await fetch('http://localhost:5000/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ formData: dataToSend })
@@ -42,9 +43,10 @@ const Login = () => {
 
         if (response.ok) {
           alert("Login successful!");
+          navigate('/'); // Redirect to home after successful login
         } else {
           const errorMessage = await response.text();
-          alert(errorMessage); 
+          alert(errorMessage); // Show the error message if login fails
         }
       } catch (error) {
         console.error("Error logging in:", error);
