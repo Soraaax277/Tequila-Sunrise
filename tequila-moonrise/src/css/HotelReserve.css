@@ -79,16 +79,22 @@ body {
   }
   
   .calendar th {
-    background-color: #7a6ff0;
-  }
-  
-  .calendar td {
-    cursor: pointer;
-  }
-  
-  .calendar td:hover {
-    background-color: #5a4fcf;
-  }
+    background-color: #7a6ff0; 
+    color: white; 
+    padding: 15px; 
+    font-weight: bold; 
+}
+
+.calendar td {
+    background-color: black;
+    color: white;
+    padding: 20px; 
+    text-align: center; 
+}
+
+.calendar td:hover {
+    background-color: #5a4fcf; 
+}
   
   .highlight-checkin {
     background-color: #7a6ff0;
