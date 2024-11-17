@@ -20,7 +20,7 @@ body {
   .navbar-nav .nav-link.active {
     font-weight: bold;
   }
-  
+
   .steps {
     display: flex;
     justify-content: center;

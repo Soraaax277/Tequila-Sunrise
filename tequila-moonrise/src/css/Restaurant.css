@@ -234,6 +234,7 @@ z-index: 1;
   margin-top: 25%;
 }
 .custom-form-bg {
+background-color: rgba(0, 0, 0, 0.8);
 padding: 50px 50px 50px 50px; 
 margin: 0 auto 15% auto;  
 border-radius: 20px;     

@@ -39,7 +39,6 @@ const restaurantSchema = new mongoose.Schema({
     timeReserved: {
         type: String,
         required: true,
-        match: /^(0?[1-9]|1[0-2]):[0-5]\d\s?(AM|PM)$|^([01]?\d|2[0-3]):[0-5]\d$/i 
     }
       
 });
