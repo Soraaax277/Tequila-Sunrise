@@ -44,6 +44,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+    width: 100%;
   }
   
   .calendar-header {
@@ -67,22 +68,30 @@ body {
   }
   
   .calendar {
+    
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
+    justify-content: center;
   }
-  
-  .calendar th, .calendar td {
+
+ .calendar tr{
+    width: 625.73px;
+  }
+
+    .calendar th, .calendar td {
     border: 1px solid white;
-    padding: 20px;
     text-align: center;
     color: white;
+    width: 14.28%;
+    box-sizing: border-box;
   }
   
   .calendar th {
     background-color: #7a6ff0; 
     color: white; 
     padding: 15px; 
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .calendar td {
@@ -94,7 +103,7 @@ body {
 
 .calendar td:hover {
     background-color: #5a4fcf; 
-}
+} 
   
   .highlight-checkin {
     background-color: #7a6ff0;
