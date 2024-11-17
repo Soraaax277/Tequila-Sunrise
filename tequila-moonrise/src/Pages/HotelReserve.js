@@ -127,7 +127,14 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   };
 
   return (
+    <div className='maincontainer'>
+
+    
+    <div className='transitionBlock'>
+      
+    </div>
     <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
+      
       <div className="steps">
         <div className="step active">CHECK-IN & <br/> CHECK-OUT DATE</div>
         <div className="step">SELECT ROOMS & RATES</div>
@@ -184,6 +191,7 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
       <div className="text-end mt-3">
         <button className="next-button" onClick={handleNext}>NEXT</button>
       </div>
+    </div>
     </div>
   );
 }
