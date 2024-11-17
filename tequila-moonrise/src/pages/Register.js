@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import '../css/Register.css'; 
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import '../css/Register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,7 @@ const Register = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // Use the new hook for navigation
 
   const handleChange = (e) => {
     setFormData({
@@ -36,35 +37,35 @@ const Register = () => {
       formErrors.confirmPassword = "Passwords do not match";
 
     setErrors(formErrors);
-
     return Object.keys(formErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (validateForm()) {
       const dataToSend = { ...formData, formType: 'Register' };
-  
+
       try {
         const response = await fetch('http://localhost:5000/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ formData: dataToSend })
         });
-  
+
         if (response.ok) {
-          console.log("Registration successful");
+          alert("Registration successful!");
+          navigate('/login'); // Use navigate for redirect after successful registration
         } else {
-          console.log("Registration failed");
+          const errorMessage = await response.text();
+          alert(errorMessage); // Show the error message from the server if the registration fails
         }
       } catch (error) {
         console.error("Error registering:", error);
+        alert("An error occurred during registration. Please try again.");
       }
     }
   };
-  
-  
 
   return (
     <div className="register-container">

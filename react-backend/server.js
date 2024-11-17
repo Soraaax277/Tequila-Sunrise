@@ -90,8 +90,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // User Registration Endpoint
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
   const { formData } = req.body;
+
+  // Check if the email already exists
+  const existingUser = await User.findOne({ email: formData.email });
+  if (existingUser) {
+    return res.status(400).send('Email already exists');
+  }
 
   const newUser = new User({
     firstName: formData.firstName,
@@ -103,16 +109,16 @@ app.post('/register', (req, res) => {
     confirmPassword: formData.confirmPassword
   });
 
-  newUser.save()
-    .then(() => {
-      console.log('User data saved to MongoDB');
-      res.send('User registered successfully');
-    })
-    .catch((err) => {
-      console.error('Error saving to MongoDB', err);
-      res.status(500).send('Error saving registration data');
-    });
+  try {
+    await newUser.save();
+    console.log('User data saved to MongoDB');
+    res.send('User registered successfully');
+  } catch (err) {
+    console.error('Error saving to MongoDB', err);
+    res.status(500).send('Error saving registration data');
+  }
 });
+
 
 // User Login Endpoint with User Existence Check
 app.post('/login', async (req, res) => {
