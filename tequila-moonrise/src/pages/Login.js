@@ -29,29 +29,29 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (validateForm()) {
       const dataToSend = { ...formData, formType: 'Login' };
-  
+
       try {
-        const response = await fetch('http://localhost:5000/saveData', {
+        const response = await fetch('http://localhost:5000/login', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ formData: dataToSend })
         });
-        
+
         if (response.ok) {
-          console.log("Data saved successfully");
+          alert("Login successful!");
         } else {
-          console.log("Failed to save data");
+          const errorMessage = await response.text();
+          alert(errorMessage); 
         }
       } catch (error) {
-        console.error("Error saving data:", error);
+        console.error("Error logging in:", error);
+        alert("An error occurred during login. Please try again.");
       }
     }
   };
-  
-  
 
   return (
     <div className="login-container">

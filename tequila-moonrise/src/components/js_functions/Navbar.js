@@ -40,7 +40,7 @@ export default function Navbar() {
             {currentWindow.pathname !== '/hotel' && (
                     <NavLink 
                     to="/hotel" 
-                    onClick={(e) => handleNavLinkClick(e, '/hotel')}  // Use the transition
+                    onClick={(e) => handleNavLinkClick(e, '/HotelReserve')}  // Use the transition
                     className="btn btn-outline-light" 
                     activeClassName="active"
                   >
