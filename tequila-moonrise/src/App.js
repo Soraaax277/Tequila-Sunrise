@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import HotelReserve from './Pages/HotelReserve';
@@ -9,6 +9,7 @@ import BookingConfirmation from './Pages/BookingConfirmation';
 import Restaurant from './Pages/Restaurant';
 import Stay from './Pages/Stay';
 import VideoBackground from './components/js_functions/Background';
+import Navbar from './components/js_functions/Navbar';
 import bgVideo from './components/vid/Starsbg.mp4';
 import './css/App.css';
 import './css/HotelReserve.css';
@@ -27,61 +28,8 @@ function App() {
   const [roomData, setRoomData] = useState(null);
   const [guestData, setGuestData] = useState(null);
 
-  // Navbar component
-  const Navbar = () => {
-    return (
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img
-              src="./components/img/logo.png" // Updated logo path
-              alt="Logo"
-              height="40" // Reduced height
-              width="40" // Reduced width
-            />
-            TEQUILA MOONRISE
-          </a>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link" activeClassName="active">
-                  HOME
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/about" className="nav-link" activeClassName="active">
-                  ABOUT
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/stay" className="nav-link" activeClassName="active">
-                  STAY
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/restaurant" className="nav-link" activeClassName="active">
-                  DINE
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/contact" className="nav-link" activeClassName="active">
-                  CONTACT
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link" activeClassName="active">
-                  LOGIN
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    );
-  };
-
   return (
-    <BookingProvider>
+    <BookingProvider> {/* Wrap your application with BookingProvider */}
       <BrowserRouter>
         <div className="App">
           <Navbar />
