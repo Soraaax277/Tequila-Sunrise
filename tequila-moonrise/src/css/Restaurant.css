@@ -232,12 +232,12 @@ z-index: 1;
   margin-top: 25%;
 }
 .custom-form-bg {
-background-color: black; 
-padding: 20px; 
+padding: 50px 50px 50px 50px; 
 margin: 0 auto 15% auto;  
-border-radius: 10px;      
+border-radius: 20px;     
 color: white;   
-width: 70vw;       
+width: 50vw; 
+border: 1px solid #ffffff;      
 }
 
 .custom-form-bg .form-label {
@@ -245,8 +245,9 @@ color: white;
 }
 
 .custom-form-bg .form-control {
-background-color: #333; 
+background-color: black;
 color: white; 
+border: 1px solid #9b8af7;
 }
 
 .custom-form-bg .form-control::placeholder {
@@ -259,7 +260,22 @@ width: 10%;
 
 .btn-sm.btn.btn-primary{
   width: 200px;
+  background-color: #7a6ff0;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
 }
 
+
+.form-select {
+  border-radius: 20px; 
+  padding: .6rem .75rem; 
+  font-size: 1rem; 
+  line-height: 1.5; 
+  border: 1px solid #9b8af7; 
+  background-color: black;
+  color: white;
+}
 
 

@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import '../../css/Restaurant.css';
+import { timeOfArrival } from './Nationalities.js';
 
 function RestoReserveForm() {
   const [validated, setValidated] = useState(false);
@@ -72,7 +73,7 @@ function RestoReserveForm() {
 
   return (
     <Form className="custom-form-bg" noValidate validated={validated} onSubmit={handleSubmit}>
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Form.Group as={Col} md="4" controlId="validationFirstName">
           <Form.Label>First name</Form.Label>
           <Form.Control 
@@ -119,7 +120,7 @@ function RestoReserveForm() {
         </Form.Group>
       </Row>
 
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Form.Group as={Col} md="4" controlId="validationCustomContactNumber">
           <Form.Label>Contact Number</Form.Label>
           <Form.Control 
@@ -153,7 +154,7 @@ function RestoReserveForm() {
         </Form.Group>
       </Row>
 
-      <Row className="mb-3">
+      <Row className="mb-2">
         <Form.Group as={Col} md="4" controlId="validationCustomDate">
           <Form.Label>Date</Form.Label>
           <Form.Control
@@ -172,18 +173,24 @@ function RestoReserveForm() {
 
         <Form.Group as={Col} md="4" controlId="validationCustomTime">
           <Form.Label>Time</Form.Label>
-          <Form.Control
+          <Form.Select
             required
-            type="time"  
-            name="timeReserved"
+            name="timeReserved"  // Ensure the name matches the formData field
             value={formData.timeReserved}
-            onChange={handleChange}
-          />
+            onChange={handleChange}  // Correctly attached to Form.Select
+          >
+            {timeOfArrival.map((time, index) => (
+              <option key={index} value={time}>
+                {time}
+              </option>
+            ))}
+          </Form.Select>
           <Form.Control.Feedback type="invalid">
             Please select a valid time.
           </Form.Control.Feedback>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
+
       </Row>
 
       <Button className="btn-sm" type="submit">Submit reservation form</Button>
