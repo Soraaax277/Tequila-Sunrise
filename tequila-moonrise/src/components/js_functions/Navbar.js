@@ -26,7 +26,7 @@ export default function Navbar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark flex-column">
-          <div className="container-fluid w-100">
+          <div className="container-fluid">
             <div className='d-flex justify-content-between align-items-center w-100'>
             <a className="navbar-brand" href="#">
               <img
@@ -114,3 +114,4 @@ export default function Navbar() {
         </nav>
     )
 }
+

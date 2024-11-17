@@ -41,12 +41,16 @@ export default function Stay({ checkinDate, checkoutDate, guestData, roomData })
     };
 
     return (
-        <div className='container-fluid px-lg-5'>
-            <img className='header-image w-100 mx-auto my-5 d-block rounded' src={StayImage} alt="Stay" />
-            <div className='d-flex flex-row my-3'>
-                <div className='d-flex flex-column'>
-                    <p className='text-justify'>Lorem ipsum dolor sit amet...</p>
-                    <Link className="btn btn-dark btn-outline-light text-center my-2 px-5 book-now-button" onClick={handleBookingSubmit}>Book Now</Link>
+        <div className='container-fluid d-flex justify-content-center'>
+            <div className='stay-container'>
+                <img className='header-image rounded' src={StayImage} alt="Stay" />
+                <div className='text-container'>
+                    <p className='text-justify exclusive-text'>
+                        Welcome to Tequila Moonrise, the universe's first luxury space hotel! Experience the thrill of zero gravity while enjoying panoramic views of the stars. 
+                        <br /><br />
+                        Book your stay now and embark on a cosmic adventure like no other. Limited reservations are available, so secure your spot among the stars today!
+                    </p>
+                    <Link className="btn book-now-button mt-3" onClick={handleBookingSubmit}>Book Now</Link>
                 </div>
             </div>
         </div>

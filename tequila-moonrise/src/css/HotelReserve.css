@@ -105,17 +105,17 @@ body {
     background-color: #5a4fcf; 
 } 
   
-  .highlight-checkin {
-    background-color: #7a6ff0;
-  }
-  
-  .highlight-checkout {
-    background-color: #5a4fcf;
-  }
-  
-  .highlight-range {
-    background-color: #9b8af7;
-  }
+.highlight-checkin {
+  background-color: #7a6ff0; 
+}
+
+.highlight-checkout {
+  background-color: #5a4fcf; 
+}
+
+.highlight-range {
+  background-color: #9b8af7; 
+}
   
   .form-group {
     margin: 20px 0;

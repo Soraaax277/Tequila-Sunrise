@@ -52,7 +52,7 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   };
 
   const getDays = (month, year) => {
-    return new Date(year, month +   1, 0).getDate();
+    return new Date(year, month + 1, 0).getDate();
   };
 
   const getCalendar = () => {
@@ -60,6 +60,10 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
     const firstDay = new Date(selectedYear, selectedMonth, 1).getDay();
     const calendar = [];
     let day = 1;
+
+    // Convert check-in and check-out dates to Date objects for comparison
+    const checkinDateObj = checkinDate ? new Date(checkinDate) : null;
+    const checkoutDateObj = checkoutDate ? new Date(checkoutDate) : null;
 
     for (let i = 0; i < 6; i++) {
       const week = [];
@@ -70,11 +74,18 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
           week.push(<td key={j}></td>);
         } else {
           const currentDate = new Date(selectedYear, selectedMonth, day);
-          const isCheckin = checkinDate && currentDate.toDateString() === new Date(checkinDate).toDateString();
-          const isCheckout = checkoutDate && currentDate.toDateString() === new Date(checkoutDate).toDateString();
-          const isInRange = checkinDate && checkoutDate && currentDate >= new Date(checkinDate) && currentDate <= new Date(checkoutDate);
+          const isCheckin = checkinDateObj && currentDate.toDateString() === checkinDateObj.toDateString();
+          const isCheckout = checkoutDateObj && currentDate.toDateString() === checkoutDateObj.toDateString();
+          
+          // Check if the current date is in the range of check-in and check-out dates
+          const isInRange = checkinDateObj && checkoutDateObj && currentDate >= checkinDateObj && currentDate <= checkoutDateObj;
+          
           week.push(
-            <td key={j} className={isCheckin ? 'highlight-checkin' : isCheckout ? 'highlight-checkout' : isInRange ? 'highlight-range' : ''} onClick={() => handleDateClick(day)}>
+            <td
+              key={j}
+              className={isCheckin ? 'highlight-checkin' : isCheckout ? 'highlight-checkout' : isInRange ? 'highlight-range' : ''}
+              onClick={() => handleDateClick(day)}
+            >
               {day}
             </td>
           );
@@ -154,7 +165,7 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
               <button onClick={() => handleMonthChange(1)}>&gt;</button>
             </div>
             <table className="calendar">
-              <thead>
+              <tbody>
                 <tr>
                   <th>Sun</th>
                   <th>Mon</th>
@@ -164,11 +175,8 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
                   <th>Fri</th>
                   <th>Sat</th>
                 </tr>
-                <tbody>
-                  {getCalendar()}
-                </tbody>
-              </thead>
-              
+                {getCalendar()}
+              </tbody>
             </table>
           </div>
         </div>

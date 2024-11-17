@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import HotelReserve from './Pages/HotelReserve';
@@ -9,7 +9,6 @@ import BookingConfirmation from './Pages/BookingConfirmation';
 import Restaurant from './Pages/Restaurant';
 import Stay from './Pages/Stay';
 import VideoBackground from './components/js_functions/Background';
-import Navbar from './components/js_functions/Navbar';
 import bgVideo from './components/vid/Starsbg.mp4';
 import './css/App.css';
 import './css/HotelReserve.css';
@@ -20,16 +19,17 @@ import './css/Background.css';
 import './css/BookingPageTransition.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import { BookingProvider } from './Pages/BookingContext'; // Ensure this path is correct
+import { BookingProvider } from './Pages/BookingContext'; 
+import logo from './components/img/logo.png'
+import Navbar from './components/js_functions/Navbar';
 
 function App() {
   const [checkinDate, setCheckinDate] = useState('');
   const [checkoutDate, setCheckoutDate] = useState('');
   const [roomData, setRoomData] = useState(null);
   const [guestData, setGuestData] = useState(null);
-
   return (
-    <BookingProvider> {/* Wrap your application with BookingProvider */}
+    <BookingProvider>
       <BrowserRouter>
         <div className="App">
           <Navbar />
@@ -56,7 +56,9 @@ function App() {
               path="/booking-confirmation" 
               element={<BookingConfirmation roomData={roomData} guestData={guestData} />} 
             />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" 
+              element={<Login />} 
+            />
             <Route path="/register" element={<Register />} />
           </Routes>
         </div>
@@ -66,3 +68,4 @@ function App() {
 }
 
 export default App;
+
