@@ -46,23 +46,23 @@ body {
 }
 
 .container {
-  max-width: 800px; /* Ensure this is appropriate for your layout */
+  max-width: 800px;
   margin: 40px auto;
   background-color: transparent;
-  padding: 20px; /* Ensure there's enough padding */
+  padding: 20px; 
   border: 1px solid #ccc;
   border-radius: 10px;
-  position: relative; /* Optional: if you need to position elements absolutely within this container */
+  position: relative; 
 }
 
 .form-container {
-  margin-bottom: 20px; /* Add space below the form container */
+  margin-bottom: 20px; 
 }
 
 .button-container {
-  text-align: right; /* Aligns the button to the right */
-  margin-top: 20px; /* Adds space above the button */
-  margin-bottom: 40px; /* Adds space below the button to separate from other elements */
+  text-align: right; 
+  margin-top: 20px; 
+  margin-bottom: 40px; 
 }
 
 .next-button {
@@ -70,9 +70,9 @@ body {
   color: white;
   border: none;
   border-radius: 10px;
-  padding: 10px 15px; /* Increase padding for better touch area */
-  font-size: 1em; /* Ensure the font size is appropriate */
-  max-width: 150px; /* Set a max width to prevent stretching */
+  padding: 10px 15px; 
+  font-size: 1em; 
+  max-width: 150px; 
   cursor: pointer;
 }
 
@@ -81,13 +81,13 @@ body {
 }
 
 .image-container {
-  margin-bottom: 20px; /* Add space below the image */
-  text-align: center; /* Center the image if needed */
+  margin-bottom: 20px; 
+  text-align: center; 
 }
 
 .room-image {
-  width: 100%; /* Ensures the image takes the full width of its container */
-  height: auto; /* Maintains the aspect ratio */
-  max-height: 200px; /* Sets a maximum height for uniformity */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  width: 100%; 
+  height: auto; 
+  max-height: 200px; 
+  object-fit: cover; 
 }
