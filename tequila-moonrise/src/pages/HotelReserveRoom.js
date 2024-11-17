@@ -23,7 +23,7 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
   const [breakfast, setBreakfast] = useState(false);
   const [extraBed, setExtraBed] = useState(false);
   const [request, setRequest] = useState('');
-  const navigate = useNavigate(); // Use navigate for redirection
+  const navigate = useNavigate();
 
   const baseRate = selectedRoom ? selectedRoom.price : 0;
   const breakfastPrice = breakfast ? 20 : 0;
@@ -32,7 +32,7 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
 
   const handleRoomSelection = (room) => {
     setSelectedRoom(room);
-    setRoomData({ room, adults, breakfast, extraBed, request, totalFee }); // Pass room data to parent
+    setRoomData({ room, adults, breakfast, extraBed, request, totalFee });
   };
 
   const handleNext = async () => {
@@ -42,15 +42,15 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
     }
 
     const roomData = {
-      hotelReserveId, // Use the hotelReserveId passed from parent
-      roomType: selectedRoom.name, // Use the room name, e.g., "Standard", "Deluxe", etc.
-      numberOfRooms: 1, // Adjust as necessary
+      hotelReserveId,
+      roomType: selectedRoom.name,
+      numberOfRooms: 1,
       pricePerNight: selectedRoom.price,
-      adults: parseInt(adults), // Ensure adults is an integer
-      breakfast: breakfast, // Boolean for breakfast
-      extraBed: extraBed, // Boolean for extra bed
-      request: request, // Special request
-      totalFee: totalFee, // Total fee calculated
+      adults: parseInt(adults),
+      breakfast,
+      extraBed,
+      request,
+      totalFee,
     };
 
     try {
@@ -64,7 +64,7 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
 
       if (response.ok) {
         console.log('Room reservation data saved successfully');
-        navigate('/guest-information'); // Navigate to the next step
+        navigate('/guest-information');
       } else {
         const error = await response.json();
         alert('Failed to save room reservation data: ' + error.message);
@@ -73,12 +73,12 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
       console.error('Error saving room reservation data:', error);
       alert('Error saving room reservation data: ' + error.message);
     }
-};
+  };
 
   return (
     <div className="container" style={{ maxWidth: '800px', margin: '40px auto', backgroundColor: 'transparent', padding: '20px', border: '1px solid #ccc', borderRadius: '10px' }}>
       <div className="steps">
-        <div className="step">CHECK-IN & CHECK -OUT DATE</div>
+        <div className="step">CHECK-IN & CHECK-OUT DATE</div>
         <div className="step active">SELECT ROOMS & RATES</div>
         <div className="step">GUEST INFORMATION</div>
         <div className="step">PAYMENT & BOOKING CONFIRMATION</div>
@@ -89,9 +89,9 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
             <label className="form-label" htmlFor="adults">Number of Adults</label>
             <input className="form-control" id="adults" type="number" value={adults} onChange={(e) => setAdults(e.target.value)} />
           </div>
-          <div className="mb-3">
+          < div className="mb-3">
             <label className="form-label" htmlFor="room">Room</label>
-            <select className="form-control" id="room" onChange={(e) => handleRoomSelection(rooms.find(room => room.id === parseInt(e.target.value)))}>
+            <select className="form-control" id="room" value={selectedRoom ? selectedRoom.id : ''} onChange={(e) => handleRoomSelection(rooms.find(room => room.id === parseInt(e.target.value)))}>
               <option value="">Select a room</option>
               {rooms.map(room => (
                 <option key={room.id} value={room.id}>{room.name}</option>
@@ -129,15 +129,15 @@ const HotelReserveRoom = ({ setRoomData, hotelReserveId }) => {
         </form>
         <div className="row">
           <div className="col-md-8">
-            <img className="room-image" src={RoomLayout} alt="Room layout image" />
+            <img className="room-image" src={RoomLayout} alt="Room layout image" style={{ width: '100%', height: 'auto', maxHeight: '200px', objectFit: 'cover' }} />
           </div>
           <div className="col-md-4">
             {rooms.map(room => (
-              <img key={room.id} className="room-image mb-3" src={room.image} alt={`Room ${room.id}`} onClick={() => handleRoomSelection(room)} />
+              <img key={room.id} className="room-image mb-3" src={room.image} alt={`Room ${room.id}`} onClick={() => handleRoomSelection(room)} style={{ width: '100%', height: 'auto', maxHeight: '200px', objectFit: 'cover', marginBottom: '10px' }} />
             ))}
           </div>
         </div>
-        <div className="text-end mt-3">
+        <div className="button-container text-end mt-3" style={{ marginTop: '20px' }}>
           <button className="next-button" onClick={handleNext}>NEXT</button>
         </div>
       </div>

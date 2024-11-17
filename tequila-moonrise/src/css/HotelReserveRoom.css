@@ -46,40 +46,48 @@ body {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative; /* Ensure relative positioning for child elements */
-}
-
-.form-group {
-  margin: 20px 0;
-}
-
-.form-control {
-  background-color: black;
-  border: 1px solid white;
-  color: white;
-  border-radius: 20px;
-  padding: 10px 20px;
-}
-
-.room-image {
-  width: 100%;
-  border: 1px solid #5a4fcf;
+  max-width: 800px; /* Ensure this is appropriate for your layout */
+  margin: 40px auto;
+  background-color: transparent;
+  padding: 20px; /* Ensure there's enough padding */
+  border: 1px solid #ccc;
   border-radius: 10px;
-  cursor: pointer;
+  position: relative; /* Optional: if you need to position elements absolutely within this container */
+}
+
+.form-container {
+  margin-bottom: 20px; /* Add space below the form container */
+}
+
+.button-container {
+  text-align: right; /* Aligns the button to the right */
+  margin-top: 20px; /* Adds space above the button */
+  margin-bottom: 40px; /* Adds space below the button to separate from other elements */
 }
 
 .next-button {
-  position: fixed; /* Fixed positioning */
-  bottom: 20px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
-  background-color: #5a4fcf; /* Button background color */
-  color: white; /* Button text color */
-  border: none; /* No border */
-  border-radius: 20px; /* Rounded corners */
-  padding: 10px 20px; /* Padding inside the button */
-  text-align: center; /* Center text */
-  z-index: 1000; /* Ensure it appears above other elements */
+  background-color: #5a4fcf;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px; /* Increase padding for better touch area */
+  font-size: 1em; /* Ensure the font size is appropriate */
+  max-width: 150px; /* Set a max width to prevent stretching */
+  cursor: pointer;
+}
+
+.next-button:hover {
+  background-color: #3a2fcf;
+}
+
+.image-container {
+  margin-bottom: 20px; /* Add space below the image */
+  text-align: center; /* Center the image if needed */
+}
+
+.room-image {
+  width: 100%; /* Ensures the image takes the full width of its container */
+  height: auto; /* Maintains the aspect ratio */
+  max-height: 200px; /* Sets a maximum height for uniformity */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
 }
