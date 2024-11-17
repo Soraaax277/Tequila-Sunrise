@@ -154,8 +154,8 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
               <button onClick={() => handleMonthChange(1)}>&gt;</button>
             </div>
             <table className="calendar">
-              <tbody>
-              <tr>
+              <thead>
+                <tr>
                   <th>Sun</th>
                   <th>Mon</th>
                   <th>Tue</th>
@@ -164,8 +164,11 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
                   <th>Fri</th>
                   <th>Sat</th>
                 </tr>
-                {getCalendar()}
-              </tbody>
+                <tbody>
+                  {getCalendar()}
+                </tbody>
+              </thead>
+              
             </table>
           </div>
         </div>
