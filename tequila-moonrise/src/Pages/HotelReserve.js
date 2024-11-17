@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '../css/HotelReserve.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   const [checkinDate, setCheckinDateState] = useState('');
   const [checkoutDate, setCheckoutDateState] = useState('');
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const navigate = useNavigate();
 
   const handleCheckinChange = (e) => {
@@ -22,7 +24,6 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   };
 
   const handleNext = async () => {
-    // Send check-in and check-out dates to the backend
     const hotelReserveData = {
       checkInDate: checkinDate,
       checkOutDate: checkoutDate,
@@ -48,6 +49,70 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
       console.error('Error saving hotel reservation data:', error);
       alert('Error saving hotel reservation data: ' + error.message);
     }
+  };
+
+  const getDays = (month, year) => {
+    return new Date(year, month +  1, 0).getDate();
+  };
+
+  const getCalendar = () => {
+    const daysInMonth = getDays(selectedMonth, selectedYear);
+    const firstDay = new Date(selectedYear, selectedMonth, 1).getDay();
+    const calendar = [];
+    let day = 1;
+
+    for (let i = 0; i < 6; i++) {
+      const week = [];
+      for (let j = 0; j < 7; j++) {
+        if (i === 0 && j < firstDay) {
+          week.push(<td key={j}></td>);
+        } else if (day > daysInMonth) {
+          week.push(<td key={j}></td>);
+        } else {
+          const currentDate = new Date(selectedYear, selectedMonth, day);
+          const isCheckin = checkinDate && currentDate.toDateString() === new Date(checkinDate).toDateString();
+          const isCheckout = checkoutDate && currentDate.toDateString() === new Date(checkoutDate).toDateString();
+          const isInRange = checkinDate && checkoutDate && currentDate >= new Date(checkinDate) && currentDate <= new Date(checkoutDate);
+          week.push(
+            <td key={j} className={isCheckin ? 'highlight-checkin' : isCheckout ? 'highlight-checkout' : isInRange ? 'highlight-range' : ''} onClick={() => handleDateClick(day)}>
+              {day}
+            </td>
+          );
+          day++;
+        }
+      }
+      calendar.push(<tr key={i}>{week}</tr>);
+    }
+    return calendar;
+  };
+
+  const handleDateClick = (day) => {
+    const selectedDate = new Date(selectedYear, selectedMonth, day).toISOString().split('T')[0];
+    if (!checkinDate || (checkinDate && checkoutDate)) {
+      setCheckinDateState(selectedDate);
+      setCheckinDate(selectedDate);
+      setCheckoutDateState('');
+      setCheckoutDate('');
+    } else {
+      setCheckoutDateState(selectedDate);
+      setCheckoutDate(selectedDate);
+    }
+  };
+
+  const handleMonthChange = (increment) => {
+    let newMonth = selectedMonth + increment;
+    let newYear = selectedYear;
+
+    if (newMonth < 0) {
+      newMonth = 11;
+      newYear -= 1;
+    } else if (newMonth > 11) {
+      newMonth = 0;
+      newYear += 1;
+    }
+
+    setSelectedMonth(newMonth);
+    setSelectedYear(newYear);
   };
 
   return (
@@ -79,6 +144,31 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
               value={checkoutDate}
               onChange={handleCheckoutChange}
             />
+          </div>
+        </div>
+        <div className="col-md-8">
+          <div className="calendar-container">
+            <div className="calendar-header">
+              <button onClick={() => handleMonthChange(-1)}>&lt;</button>
+              <span>{new Date(selectedYear, selectedMonth).toLocaleString('default', { month: 'long' })} {selectedYear}</span>
+              <button onClick={() => handleMonthChange(1)}>&gt;</button>
+            </div>
+            <table className="calendar">
+              <thead>
+                <tr>
+                  <th>Sun</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                </tr>
+              </thead>
+              <tbody>
+                {getCalendar()}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

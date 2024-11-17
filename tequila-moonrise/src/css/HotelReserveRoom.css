@@ -49,6 +49,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative; /* Ensure relative positioning for child elements */
 }
 
 .form-group {
@@ -70,16 +71,15 @@ body {
   cursor: pointer;
 }
 
-.btn-next, .next-button {
-  background-color: #5a4fcf;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-decoration: none;
-  text-align: center;
+.next-button {
+  position: fixed; /* Fixed positioning */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  background-color: #5a4fcf; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 10px 20px; /* Padding inside the button */
+  text-align: center; /* Center text */
+  z-index: 1000; /* Ensure it appears above other elements */
 }

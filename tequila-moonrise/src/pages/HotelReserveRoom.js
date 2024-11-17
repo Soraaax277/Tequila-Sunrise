@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import '../css/HotelReserve.css';
+import '../css/HotelReserveRoom.css';
 import { useNavigate } from 'react-router-dom';
 import RoomLayout from '../components/img/RoomLayout.png';
 import Room1 from '../components/img/room1.jpg';
