@@ -134,7 +134,13 @@ body {
     padding: 10px;
   }
   
+.text-end{
+  position: relative;
+  height: 100px;
+}
+
   .next-button {
+    position: absolute;
     background-color: #7a6ff0;
     color: white;
     border: none;

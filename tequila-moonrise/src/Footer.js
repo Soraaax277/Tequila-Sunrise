@@ -4,7 +4,7 @@ import './Footer.css'; // Make sure to create this CSS file as well
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="footercontainer">
         <p className="footer-text">© 2023 Tequila Moonrise. All Rights Reserved.</p>
         <ul className="footer-links">
           <li><a href="/about">About Us</a></li>
