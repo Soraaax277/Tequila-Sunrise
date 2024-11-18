@@ -1,39 +1,64 @@
-.footer {
-    background-color: #000; /* Background color */
-    color: #fff; /* Text color */
-    padding: 20px; /* Padding around the footer */
-    text-align: center; /* Center the text */
-    width: 100%; /* Full width */
-    position: relative; /* Ensure it stays in place */
-    z-index: 1; /* Ensure it's above other elements if needed */
+html, body {
+    height: 100%;
+    margin: 0; 
 }
 
-.footer .container {
-    max-width: 1200px; 
-    margin: 0 auto; 
+.wrapper {
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh; 
+}
+
+.content {
+    flex: 1; 
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+
+.footer {
+    background-color: transparent; 
+    color: #fff; 
+    padding: 10px 0; 
+    text-align: center; 
+    width: 100%;
+    margin-top: auto; 
+    border-top: 2px solid #fff; 
 }
 
 .footer-text {
-    margin: 0; 
-    font-size: 14px; /* Font size for footer text */
+    margin: 5px 0; 
+    font-size: 12px; 
 }
 
 .footer-links {
-    list-style: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-    margin: 10px 0 0; 
+    list-style: none; 
+    padding: 0; 
+    margin: 5px 0; 
 }
 
 .footer-links li {
-    display: inline; /* Display links inline */
-    margin: 0 10px; /* Margin between links */
+    display: inline; 
+    margin: 0 5px; 
 }
 
 .footer-links a {
-    color: #fff; /* Link color */
-    text-decoration: none; /* Remove underline */
+    color: #fff; 
+    text-decoration: none; 
 }
 
 .footer-links a:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline; 
+}
+
+.social-media {
+    margin-top: 5px; 
+}
+
+.social-media a {
+    margin: 0 5px; 
+}
+
+.social-media img {
+    width: 20px; 
+    height: auto; 
 }
