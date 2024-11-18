@@ -18,13 +18,14 @@ export default function Navbar() {
     const navigate = useNavigate();
     const { isTransitioning, triggerTransition, slideClass, videoClass } = usePageTransition();
 
-    const handleNavLinkClick = (e, path, isBooking = false) => {
+    const handleNavLinkClick = (e, path) => {
         e.preventDefault();
-        if (isBooking) {
-            triggerTransition(() => navigate(path));
-        } else {
-            navigate(path);
-        }
+        navigate(path); // Directly navigate without transition for other links
+    };
+
+    const handleBookNowClick = (e) => {
+        e.preventDefault();
+        triggerTransition(() => navigate('/hotelreserve')); // Trigger transition for BOOK NOW
     };
 
     return (
@@ -99,11 +100,11 @@ export default function Navbar() {
                                 LOGIN
                             </NavLink>
                         </li>
-                        {currentWindow.pathname !== '/hotel' && (
+                        {currentWindow.pathname !== '/stay' && (
                             <li className="nav-item">
                                 <NavLink 
-                                    to="/hotel" 
-                                    onClick={(e) => handleNavLinkClick(e, '/HotelReserve', true)} // Trigger transition for "BOOK NOW"
+                                    to="/stay" 
+                                    onClick={handleBookNowClick} // Call the separate function for BOOK NOW
                                     className="btn btn-outline-light" 
                                     activeClassName="active"
                                 >
@@ -128,7 +129,7 @@ export default function Navbar() {
                     >
                         <source src={RocketVid} type="video/mp4" />
                     </video>
-                </div>
+ </div>
             )}
         </nav>
     );

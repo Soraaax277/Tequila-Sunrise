@@ -1,51 +1,39 @@
+/* Footer.css */
+
 .footer {
-    background-color: #000; 
-    color: #fff; 
-    padding: 40px 20px; 
-    text-align: center; 
-    position: relative; 
-    bottom: 0; 
-    left: 0; 
-    right: 0; 
-  }
-  
-  .footer .container {
+    background-color: #000; /* Background color */
+    color: #fff; /* Text color */
+    padding: 20px; /* Padding around the footer */
+    text-align: center; /* Center the text */
+    width: 100%; /* Full width */
+}
+
+.footer .container {
     max-width: 1200px; 
     margin: 0 auto; 
-  }
+}
 
-  .footer-text {
+.footer-text {
     margin: 0; 
-    font-size: 14px; 
-    opacity: 0.7; 
-  }
-  
-  .footer-links {
-    list-style: none; 
-    padding: 0; 
+    font-size: 14px; /* Font size for footer text */
+}
+
+.footer-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
     margin: 10px 0 0; 
-  }
-  
-  .footer-links li {
-    display: inline; 
-    margin: 0 15px; 
-  }
-  
-  .footer-links a {
-    color: #fff; 
-    text-decoration: none; 
-    transition: color 0.3s; 
-  }
-  
-  .footer-links a:hover {
-    color: #ff9900; 
-    text-decoration: underline; 
-  }
-  
-  
-  @media (max-width: 600px) {
-    .footer-links li {
-      display: block; 
-      margin: 10px 0; 
-    }
-  }
+}
+
+.footer-links li {
+    display: inline; /* Display links inline */
+    margin: 0 10px; /* Margin between links */
+}
+
+.footer-links a {
+    color: #fff; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
