@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import HotelReserve from './Pages/HotelReserve';
@@ -20,14 +20,15 @@ import './css/BookingPageTransition.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { BookingProvider } from './Pages/BookingContext'; 
-import logo from './components/img/logo.png'
 import Navbar from './components/js_functions/Navbar';
+import Footer from './Footer'; // Import the Footer component
 
 function App() {
   const [checkinDate, setCheckinDate] = useState('');
   const [checkoutDate, setCheckoutDate] = useState('');
   const [roomData, setRoomData] = useState(null);
   const [guestData, setGuestData] = useState(null);
+
   return (
     <BookingProvider>
       <BrowserRouter>
@@ -56,11 +57,10 @@ function App() {
               path="/booking-confirmation" 
               element={<BookingConfirmation roomData={roomData} guestData={guestData} />} 
             />
-            <Route path="/login" 
-              element={<Login />} 
-            />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
+          <Footer /> {}
         </div>
       </BrowserRouter>
     </BookingProvider>
