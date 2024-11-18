@@ -1,44 +1,32 @@
-html, body {
-    height: 100%; /* Ensure the body takes full height */
-    margin: 0; /* Remove default margin */
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    min-height: 100vh; /* Ensure the wrapper takes at least full viewport height */
-}
-
-.content {
-    flex: 1; /* Allow content to grow and take up available space */
-    padding: 20px; /* Add padding for content */
-    box-sizing: border-box; /* Ensure padding is included in width/height calculations */
-}
-
 .footer {
-    background-color: transparent; /* Make background transparent */
+    background-color: #000; /* Background color */
     color: #fff; /* Text color */
-    padding: 10px 0; /* Padding for the footer, top and bottom */
+    padding: 20px; /* Padding around the footer */
     text-align: center; /* Center the text */
     width: 100%; /* Full width */
-    margin-top: auto; /* Push footer to the bottom */
-    border-top: 2px solid #fff; /* Add a top border to create a line effect */
+    position: relative; /* Ensure it stays in place */
+    z-index: 1; /* Ensure it's above other elements if needed */
+}
+
+.footer .container {
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 .footer-text {
-    margin: 5px 0; /* Same margin as navbar items */
-    font-size: 12px; /* Smaller font size */
+    margin: 0; 
+    font-size: 14px; /* Font size for footer text */
 }
 
 .footer-links {
     list-style: none; /* Remove bullet points */
     padding: 0; /* Remove padding */
-    margin: 5px 0; /* Same margin as navbar items */
+    margin: 10px 0 0; 
 }
 
 .footer-links li {
     display: inline; /* Display links inline */
-    margin: 0 5px; /* Reduced space between links */
+    margin: 0 10px; /* Margin between links */
 }
 
 .footer-links a {
@@ -48,17 +36,4 @@ html, body {
 
 .footer-links a:hover {
     text-decoration: underline; /* Underline on hover */
-}
-
-.social-media {
-    margin-top: 5px; /* Space above social media icons */
-}
-
-.social-media a {
-    margin: 0 5px; /* Space between icons */
-}
-
-.social-media img {
-    width: 20px; /* Set a smaller fixed width for the icons */
-    height: auto; /* Maintain aspect ratio */
 }
