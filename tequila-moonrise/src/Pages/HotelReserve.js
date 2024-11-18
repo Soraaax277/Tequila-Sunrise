@@ -127,13 +127,13 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   };
 
   return (
-    <div className='maincontainer'>
+    <div className='hrmaincontainer'>
 
     
-    <div className='transitionBlock'>
+    <div className='hrtransitionBlock'>
       
     </div>
-    <div className="container" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
+    <div className="hrcontainer" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
       
       <div className="steps">
         <div className="step active">CHECK-IN & <br/> CHECK-OUT DATE</div>

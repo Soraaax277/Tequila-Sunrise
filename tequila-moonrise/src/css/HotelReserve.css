@@ -1,4 +1,4 @@
-.maincontainer{
+.hrmaincontainer{
   width: 100vw;
   height: 100%
 }
@@ -151,11 +151,7 @@ body {
     right: 20px;
   }
 
-.container{
-  animation: moveUp 2s ease-out forwards;
-  animation-delay: 2s;
-}
-  .transitionBlock {
+  .hrtransitionBlock {
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -166,11 +162,17 @@ body {
     animation-delay: 2s;
   }
   
+  .hrcontainer{
+    position: relative;
+    animation: moveUp 2s ease-out forwards;
+    animation-delay: 2s;
+  }
+
   @keyframes moveUp {
     0% {
       top: 0px;
     }
     100% {
-      top: -120vh; /* Adjust this value based on how far up you want the block to move */
+      top: -120vh; 
     }
   }
