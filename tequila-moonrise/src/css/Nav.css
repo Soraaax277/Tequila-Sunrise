@@ -1,7 +1,41 @@
-.nav-link:hover, .btn-outline-light:hover {
-    color: #715cf8;
-  }
+.container-fluid {
+  padding: 5px; /* Further reduced padding for a smaller navbar */
+}
 
-  .active {
-    color: #715cf8 !important;
-  }
+.navbar-brand img {
+  height: 30px; /* Further reduced logo height */
+  width: 30px;  /* Maintain aspect ratio */
+}
+
+.nav-link {
+  font-size: 0.8em; /* Smaller font size for nav links */
+}
+
+.btn-outline-light {
+  font-size: 0.8em; /* Smaller font size for button */
+  padding: 5px 8px; /* Reduced padding for button */
+}
+
+.navbar {
+  padding: 3px 0; /* Further reduced overall navbar padding */
+}
+
+.navbar-nav .nav-item {
+  margin: 0 5px; /* Reduced space between nav items */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9); /* Adjust link color for better visibility */
+}
+
+.navbar-collapse {
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.nav-link:hover, .btn-outline-light:hover {
+  color: #715cf8; /* Keep the hover effect */
+}
+
+.active {
+  color: #715cf8 !important; /* Keep active link color */
+}
