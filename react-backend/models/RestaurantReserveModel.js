@@ -20,9 +20,8 @@ const restaurantSchema = new mongoose.Schema({
     },
 
     contactNumber: {
-        type: String,
+        type: Number,
         required: true,
-        match: /^[0-9]$/
     },    
 
     email: {

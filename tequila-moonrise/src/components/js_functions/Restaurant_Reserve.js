@@ -125,7 +125,7 @@ function RestoReserveForm() {
           <Form.Label>Contact Number</Form.Label>
           <Form.Control 
             required 
-            type="text" 
+            type="number" 
             placeholder="Contact number" 
             name="contactNumber"
             value={formData.contactNumber}
@@ -179,6 +179,7 @@ function RestoReserveForm() {
             value={formData.timeReserved}
             onChange={handleChange}  // Correctly attached to Form.Select
           >
+            <option value="" disabled>Select a time</option>
             {timeOfArrival.map((time, index) => (
               <option key={index} value={time}>
                 {time}
