@@ -22,7 +22,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import { BookingProvider } from './Pages/BookingContext'; 
 import Navbar from './components/js_functions/Navbar';
 import Footer from './Footer'; // Import the Footer component
-
+import homepage from './components/img/tequila-moonrise.png';
 function App() {
   const [checkinDate, setCheckinDate] = useState('');
   const [checkoutDate, setCheckoutDate] = useState('');
@@ -36,7 +36,7 @@ function App() {
           <Navbar />
           <VideoBackground videoSrc={bgVideo} />
           <Routes>
-            <Route path="/" element={<div>Welcome to our hotel!</div>} />
+            <Route path="/" element={<div className='homepage'><img className = "homepageimage" src = {homepage} alt="tequila moonrise hompage"/></div>} />
             <Route path="/about" element={<div>About us</div>} />
             <Route path="/stay" element={<Stay />} />
             <Route 

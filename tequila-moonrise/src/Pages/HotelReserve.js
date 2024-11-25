@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '../css/HotelReserve.css';
 import { useNavigate } from 'react-router-dom';
+import RocketVid from '../components/vid/Rocket.mp4';
+
 
 function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   const [checkinDate, setCheckinDateState] = useState('');
@@ -10,7 +12,7 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const navigate = useNavigate();
-
+  
   const handleCheckinChange = (e) => {
     const date = e.target.value;
     setCheckinDateState(date);
@@ -128,10 +130,17 @@ function HotelReserve({ setCheckinDate, setCheckoutDate }) {
 
   return (
     <div className='hrmaincontainer'>
-
+      
     
     <div className='hrtransitionBlock'>
-      
+    <video
+      className="hrrocket"
+        muted
+        loop={false}
+        autoPlay
+      >
+        <source src={RocketVid} type="video/mp4" />
+      </video>
     </div>
     <div className="hrcontainer" style={{ backgroundColor: 'transparent', border: '1px solid #ccc', borderRadius: '10px', padding: '20px', width: '80%', margin: '48px auto' }}>
       

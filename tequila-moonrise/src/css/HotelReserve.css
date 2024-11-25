@@ -159,14 +159,25 @@ body {
     top: 0px;
     margin-bottom: 300px;
     animation: moveUp 2s ease-out forwards;
-    animation-delay: 2s;
+    animation-delay: 1.5s;
   }
   
+  .hrrocket {
+    width: 100vw;
+    object-fit: cover; /* Ensures the video covers the area without distortion */
+    position: absolute; /* Stays within the container */
+    top: 0;
+    left: 0;
+    z-index: 800;
+  }
+
   .hrcontainer{
     position: relative;
     animation: moveUp 2s ease-out forwards;
     animation-delay: 2s;
   }
+
+  
 
   @keyframes moveUp {
     0% {

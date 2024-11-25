@@ -59,3 +59,13 @@ html, body {
         margin: 10px 0; 
     }
 }
+
+.homepage{
+    margin-top: 7%;
+    width: 100vw;
+    justify-content: center;
+}
+
+.homepageimage{
+    width: 100%;
+}

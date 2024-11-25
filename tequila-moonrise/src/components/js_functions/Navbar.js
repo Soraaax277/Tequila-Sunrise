@@ -129,7 +129,7 @@ export default function Navbar() {
                     >
                         <source src={RocketVid} type="video/mp4" />
                     </video>
- </div>
+                </div>
             )}
         </nav>
     );
