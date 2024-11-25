@@ -22,7 +22,7 @@ const restaurantSchema = new mongoose.Schema({
     contactNumber: {
         type: String,
         required: true,
-        match: /^[0-9]$/  // Allows 10 or 11 digit numbers only
+        match: /^[0-9]$/
     },    
 
     email: {
