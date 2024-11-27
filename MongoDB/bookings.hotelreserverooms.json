@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "67473fabb8bc68bf2d1f4465"
+  },
+  "roomType": "Villa",
+  "numberOfRooms": 1,
+  "pricePerNight": 250,
+  "adults": 1,
+  "breakfast": false,
+  "extraBed": false,
+  "request": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674740f2b8bc68bf2d1f4474"
+  },
+  "roomType": "Suite",
+  "numberOfRooms": 1,
+  "pricePerNight": 200,
+  "adults": 6,
+  "breakfast": true,
+  "extraBed": true,
+  "request": "Hi",
+  "__v": 0
+}]

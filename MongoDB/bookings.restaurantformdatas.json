@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "67473fd1b8bc68bf2d1f4469"
+  },
+  "firstName": "Jacob Nathaniel",
+  "lastName": "Lopez",
+  "guestNumber": 2,
+  "contactNumber": 1234567,
+  "email": "jacob@email.com",
+  "dateReserved": {
+    "$date": "2024-11-30T00:00:00.000Z"
+  },
+  "timeReserved": "08:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674741a6b8bc68bf2d1f4479"
+  },
+  "firstName": "Mica",
+  "lastName": "Santiago",
+  "guestNumber": 4,
+  "contactNumber": 6423,
+  "email": "mica@email.com",
+  "dateReserved": {
+    "$date": "2025-02-25T00:00:00.000Z"
+  },
+  "timeReserved": "08:00",
+  "__v": 0
+}]

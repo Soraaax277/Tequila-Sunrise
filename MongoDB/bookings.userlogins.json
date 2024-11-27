@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "67473f8fb8bc68bf2d1f4461"
+  },
+  "email": "jacob@email.com",
+  "password": "123",
+  "loginTimestamp": {
+    "$date": "2024-11-27T15:49:35.091Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674740d5b8bc68bf2d1f4470"
+  },
+  "email": "mica@email.com",
+  "password": "ASDF",
+  "loginTimestamp": {
+    "$date": "2024-11-27T15:55:01.150Z"
+  },
+  "__v": 0
+}]
